@@ -14,6 +14,6 @@ export class QuizPageComponent implements OnInit{
   }
 
   ngOnInit(): void{
-    this.users = this.usersService.getAll();
+    this.usersService.getAll().subscribe(users => this.users = users);
   }
 }
