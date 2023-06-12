@@ -16,4 +16,12 @@ export class QuizPageComponent implements OnInit{
   ngOnInit(): void{
     this.usersService.getAll().subscribe(users => this.users = users);
   }
+
+  deleteUser(id: string): void{
+    this.usersService.deleteById(id).subscribe(() => {
+      this.users = this.users.filter(
+        user => user.id !== id
+      );
+    });;
+  }
 }

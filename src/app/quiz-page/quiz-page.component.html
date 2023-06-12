@@ -1,4 +1,6 @@
-<p>coucou</p>
 <ul>
-    <li *ngFor="let user of users">{{user.firstname}}</li>
+    <li *ngFor="let user of users">
+        {{user.firstname}}
+        <button (click)="deleteUser(user.id)">Supprimer</button>
+    </li>
 </ul>
