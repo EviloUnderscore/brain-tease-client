@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { QuizPageComponent } from './quiz-page/quiz-page.component';
 import { MyQuizPageComponent } from './my-quiz-page/my-quiz-page.component';
 import { FormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -18,6 +21,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

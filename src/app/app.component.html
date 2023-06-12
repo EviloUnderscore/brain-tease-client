@@ -1,9 +1,13 @@
-<div>
-    <p>NAV-BAR</p>
-    <button>Connexion</button>
-    <button>Déconnexion</button>
-</div>
-
-<div class="content-page">
-    <router-outlet></router-outlet>
+<div id="page-wrap">
+    <div id="max-width-column" *ngIf="auth.user | async">
+        <p>nav-bar soon</p>
+        <button (click)="signOutClicked()">Sign Out</button>
+        <div id="content-wrap">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <div id="max-width-column" *ngIf="!(auth.user | async)">
+        <h1>You need to sign first</h1>
+        <button (click)="signInClicked()">Sign in with Google</button>
+    </div>
 </div>
