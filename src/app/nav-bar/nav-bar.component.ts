@@ -17,7 +17,7 @@ export class NavBarComponent {
     public auth: AngularFireAuth,
     private breakpointObserver: BreakpointObserver){
       this.isLargeScreen$ = this.breakpointObserver
-        .observe(Breakpoints.Medium)
+        .observe([Breakpoints.Medium, Breakpoints.Large])
         .pipe(map((result: { matches: any; }) => result.matches)
       );
   }
