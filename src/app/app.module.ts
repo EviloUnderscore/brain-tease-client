@@ -9,12 +9,16 @@ import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from '../environments/environment';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { AppPageComponent } from './app-page/app-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuizPageComponent,
     MyQuizPageComponent,
+    LoginPageComponent,
+    AppPageComponent,
   ],
   imports: [
     BrowserModule,

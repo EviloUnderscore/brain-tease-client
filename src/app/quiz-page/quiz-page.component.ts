@@ -15,14 +15,24 @@ export class QuizPageComponent implements OnInit{
   }
 
   ngOnInit(): void{
+    this.getAll()
+  }
+
+  private getAll(): void{
     this.quizzesService.getAll().subscribe(quizzes => this.quizzes = quizzes);
   }
 
-  deleteQuiz(id: string): void{
+  public deleteQuiz(id: string): void{
     this.quizzesService.deleteById(id).subscribe(() => {
       this.quizzes = this.quizzes.filter(
         quizzes => quizzes.id !== id
       );
     });;
+  }
+
+  public createClicked(): void{
+    this.quizzesService.createQuiz('testttttt', 'desc', '1').subscribe(() => {
+      this.getAll();
+    })
   }
 }
