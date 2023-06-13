@@ -23,7 +23,15 @@ export class AppComponent {
   }
 
   test(){
-    console.log(this.auth.user);
+  
+      this.auth.user.subscribe(user => {
+        user && user.getIdToken().then(token => {
+          console.log(user.uid);
+          console.log(user);
+          
+          
+        })
+      })
   }
 
 
