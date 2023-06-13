@@ -5,15 +5,16 @@
     gap: 4vh;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 90vh;
 }
 
 .login-square{
     background-color: rgb(31 41 55);
     display: flex;
+    text-align: center;
     flex-direction: column;
-    width: 20rem;
-    height: 50vh;
+    width: 25rem;
+    height: 70vh;
     border-width: 1px;
     border-color: rgb(17 24 39);
     border-radius: 0.5rem;
@@ -23,12 +24,18 @@
 
 .btn-list{
     display: flex;
+    flex-direction: column;
+    gap: 1rem;
     align-items: center;
     justify-content: center;
 }
 
 .connection{
-    text-align: center;
     font-weight: 600;
     padding-bottom: 2rem;
+}
+
+.btn{
+    width: 100%;
+    border-radius: 5px;
 }
