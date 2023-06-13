@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from './types';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Quiz } from 'src/types/quiz';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -20,18 +20,18 @@ const httpOptionsWithAuthToken = (token: any) => ({
 @Injectable({
   providedIn: 'root'
 })
-export class UsersService {
+export class QuizzesService {
 
   constructor(
     private http: HttpClient,
     private auth: AngularFireAuth
   ) {}
 
-  getAll(): Observable<User[]>{
-    return this.http.get<User[]>('/api/users')
+  getAll(): Observable<Quiz[]>{
+    return this.http.get<Quiz[]>('/api/quizzes')
   }
 
   deleteById(id: string): Observable<any>{
-    return this.http.delete<User>(`/api/users/${id}/delete`);
+    return this.http.delete<Quiz>(`/api/quizzes/${id}`);
   }
 }

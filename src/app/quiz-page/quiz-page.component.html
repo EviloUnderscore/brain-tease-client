@@ -1,6 +1,6 @@
 <ul>
-    <li *ngFor="let user of users">
-        {{user.firstname}}
-        <button (click)="deleteUser(user.id)">Supprimer</button>
+    <li *ngFor="let quiz of quizzes">
+        {{quiz.name}}
+        <button (click)="deleteQuiz(quiz.id)">Supprimer</button>
     </li>
 </ul>

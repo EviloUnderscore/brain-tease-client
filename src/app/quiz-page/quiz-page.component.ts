@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../users.service';
-import { User } from '../types';
+import { QuizzesService } from 'src/services/quizzes.service';
+import { Quiz } from 'src/types/quiz';
+
 
 @Component({
   selector: 'app-quiz-page',
@@ -8,19 +9,19 @@ import { User } from '../types';
   styleUrls: ['./quiz-page.component.css']
 })
 export class QuizPageComponent implements OnInit{
-  users: User[] = [];
+  quizzes: Quiz[] = [];
 
-  constructor(private usersService: UsersService){
+  constructor(private quizzesService: QuizzesService){
   }
 
   ngOnInit(): void{
-    this.usersService.getAll().subscribe(users => this.users = users);
+    this.quizzesService.getAll().subscribe(quizzes => this.quizzes = quizzes);
   }
 
-  deleteUser(id: string): void{
-    this.usersService.deleteById(id).subscribe(() => {
-      this.users = this.users.filter(
-        user => user.id !== id
+  deleteQuiz(id: string): void{
+    this.quizzesService.deleteById(id).subscribe(() => {
+      this.quizzes = this.quizzes.filter(
+        quizzes => quizzes.id !== id
       );
     });;
   }
