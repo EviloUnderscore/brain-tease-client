@@ -31,7 +31,7 @@ export class QuizPageComponent implements OnInit{
   }
 
   public createClicked(): void{
-    this.quizzesService.createQuiz('testttttt', 'desc', '1').subscribe(() => {
+    this.quizzesService.createQuiz('azerty', 'desc', '1').subscribe(() => {
       this.getAll();
     })
   }

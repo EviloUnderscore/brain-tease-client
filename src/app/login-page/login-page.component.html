@@ -1,4 +1,14 @@
 <div class="root">
-    <h1>Vous n'êtes pas connecté</h1>
-    <button (click)="signInClicked()">Se connecter avec Google</button>
+    <div class="login-area">
+        <div class="login-square">
+            <div class="mb-4">
+                <h1 class="pb-5">Bienvenue</h1>
+                <p class="">Vous devez être connecté pour utiliser l'application</p>
+            </div>
+            <p class="connection">Se connecter via :</p>
+            <form class="btn-list">
+                <button class="btn btn-primary btn-lg" (click)="signInClicked()">Google</button>
+            </form>
+        </div>
+    </div>
 </div>

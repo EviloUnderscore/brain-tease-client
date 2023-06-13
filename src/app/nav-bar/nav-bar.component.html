@@ -1,0 +1,9 @@
+<div class="root">
+    <div class="user-area" *ngIf="auth.user | async" >
+        <p>Bonjour ???</p>
+    </div>
+    <h1>Brain Tease</h1>
+    <div class="btn-area" *ngIf="auth.user | async" >
+        <button class="btn btn-secondary" (click)="signOutClicked()">Déconnexion</button>
+    </div>
+</div>

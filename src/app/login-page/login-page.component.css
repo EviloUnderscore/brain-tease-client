@@ -1,0 +1,34 @@
+.login-area{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 4vh;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.login-square{
+    background-color: rgb(31 41 55);
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    height: 50vh;
+    border-width: 1px;
+    border-color: rgb(17 24 39);
+    border-radius: 0.5rem;
+    padding: 3rem 2rem;
+    color: white;
+}
+
+.btn-list{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.connection{
+    text-align: center;
+    font-weight: 600;
+    padding-bottom: 2rem;
+}
