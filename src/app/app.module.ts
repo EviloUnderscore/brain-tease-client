@@ -11,6 +11,7 @@ import { environment } from '../environments/environment';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { AppPageComponent } from './app-page/app-page.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
