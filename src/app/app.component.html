@@ -2,6 +2,7 @@
     <div id="max-width-column" *ngIf="auth.user | async">
         <p>nav-bar soon</p>
         <button (click)="test()">test</button>
+        <button (click)="createClicked()">create test</button>
         <button (click)="signOutClicked()">Sign Out</button>
         <div id="content-wrap">
             <router-outlet></router-outlet>

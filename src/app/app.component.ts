@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
+import { QuizzesService } from 'src/services/quizzes.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,10 @@ import firebase from 'firebase/compat/app';
 export class AppComponent {
   title = 'Brain Tease';
 
-  constructor(public auth: AngularFireAuth){ 
+  constructor(
+    public auth: AngularFireAuth,
+    private router: Router,
+    private quizzesService: QuizzesService){ 
   }
 
   signInClicked(): void{
@@ -22,14 +27,17 @@ export class AppComponent {
     location.reload();
   }
 
+  createClicked(): void{
+    this.quizzesService.createQuiz('testttttt', 'desc', '1').subscribe(() => {
+      this.router.navigateByUrl('/my-quizzes');
+    })
+  }
+
   test(){
-  
       this.auth.user.subscribe(user => {
         user && user.getIdToken().then(token => {
           console.log(user.uid);
-          console.log(user);
-          
-          
+          console.log(user);   
         })
       })
   }
