@@ -4,20 +4,20 @@
             <a class="link" [routerLink]="['/home']" routerLinkActive="active-link">Accueil</a>
             <a class="link" [routerLink]="['/my-quizzes']" routerLinkActive="active-link">Mes quizzes</a>
         </div>
-        <div *ngIf="!(isLargeScreen$ | async)">
+        <div *ngIf="!(isLargeScreen$ | async)" class="menu-db">
             <div (click)="dropdownClicked()" class="link">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="svg">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
             </div>
-            <div *ngIf="dropdown">
-                <a class="link" [routerLink]="['/home']" routerLinkActive="active-link">Accueil</a>
-                <a class="link" [routerLink]="['/my-quizzes']" routerLinkActive="active-link">Mes quizzes</a>
+            <div *ngIf="dropdown" class="dropdown">
+                <a class="link" [routerLink]="['/home']" routerLinkActive="active-link-db" (click)="dropdownClicked()">Accueil</a>
+                <a class="link" [routerLink]="['/my-quizzes']" routerLinkActive="active-link-db" (click)="dropdownClicked()">Mes quizzes</a>
             </div>
         </div>
     </div>
     <div class="title-section">
-        <h1>Brain Tease</h1>
+        <h1 class="m-0">Brain Tease</h1>
         <p *ngIf="(isLargeScreen$ | async)" class="m-0">Bonjour {{userName}}</p>
     </div>
     <div class="btn-area" *ngIf="auth.user | async" >

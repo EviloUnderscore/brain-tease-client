@@ -22,7 +22,6 @@ export class NavBarComponent {
         .pipe(map((result: { matches: any; }) => result.matches)
       );
   }
-  
 
   ngOnInit(): void{
     this.auth.user.subscribe(user => {
