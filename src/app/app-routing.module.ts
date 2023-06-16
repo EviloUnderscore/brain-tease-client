@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { QuizPageComponent } from './quiz-page/quiz-page.component';
 
 const routes: Routes = [
-  {path: 'quiz', component: QuizPageComponent, pathMatch: 'full'},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
 ];
 
 @NgModule({
