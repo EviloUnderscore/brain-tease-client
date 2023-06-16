@@ -11,6 +11,7 @@ import { Observable, map } from 'rxjs';
 export class NavBarComponent {
   public userName: string | null = null;
   public isLargeScreen$: Observable<boolean>;
+  public dropdown: boolean = false;
   private userId: string | null = null;
 
   constructor(
@@ -34,5 +35,9 @@ export class NavBarComponent {
 
   signOutClicked(): void{
     this.auth.signOut();
+  }
+
+  dropdownClicked(): void{
+    this.dropdown = !this.dropdown;
   }
 }
