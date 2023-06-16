@@ -26,9 +26,7 @@ export class QuizItemComponent {
 
   ngOnInit():void{
     this.getUser();
-    this.getCategory();
-    console.log(this.quiz);
-    
+    this.getCategory();    
   }
 
   private getUser(): void{

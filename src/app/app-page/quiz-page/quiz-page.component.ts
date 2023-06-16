@@ -19,12 +19,10 @@ export class QuizPageComponent implements OnInit{
 
   ngOnInit(): void{
     this.getAll();
-    console.log(this.quizzes);
-    
   }
 
   private getAll(): void{
-    this.quizzesService.getAll().subscribe(quizzes => this.quizzes.addAll(quizzes));
+    this.quizzesService.getAll().subscribe(quizzes => this.quizzes.addAll(quizzes));    
   }
 
   public deleteQuiz(id: string): void{

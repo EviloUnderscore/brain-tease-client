@@ -10,8 +10,10 @@ export class Quizzes {
 
     public addAll(quizzes: any){
         for (let q of quizzes) {
-            this.addQuiz(q);
-        }
+            let quiz = new Quiz();
+            quiz.serialize(q);
+            this.addQuiz(quiz);
+        }       
     }
 
     public addQuiz(quiz: Quiz) {
@@ -27,6 +29,10 @@ export class Quizzes {
 
     public getQuizById(quizId: string): Quiz | undefined {
         return this.quizzes.find(quiz => quiz.id === quizId);
+    }
+
+    public toString(): string {
+        return this.quizzes.map(quiz => quiz.toString()).join("\n");
     }
 
     [Symbol.iterator]() {
