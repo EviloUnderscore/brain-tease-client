@@ -11,6 +11,10 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { AppPageComponent } from './app-page/app-page.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { QuizPageComponent } from './app-page/quiz-page/quiz-page.component';
+import { QuizPlayComponent } from './app-page/quiz-play/quiz-play.component';
+import { MyQuizzesComponent } from './app-page/my-quizzes/my-quizzes.component';
+import { QuizUpdateComponent } from './app-page/quiz-update/quiz-update.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +22,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     LoginPageComponent,
     AppPageComponent,
     NavBarComponent,
+    QuizPageComponent,
+    QuizPlayComponent,
+    MyQuizzesComponent,
+    QuizUpdateComponent,
+
   ],
   imports: [
     BrowserModule,
