@@ -27,11 +27,12 @@ export class QuizItemComponent {
   ngOnInit():void{
     this.getUser();
     this.getCategory();
+    console.log(this.quiz);
     
   }
 
   private getUser(): void{
-    this.userService.getById(this.quiz.user_id).subscribe(user => this.user = user);
+    this.userService.getById(this.quiz.user_id).subscribe(user => this.user.serialize(user));
   }
 
   private getCategory(): void{

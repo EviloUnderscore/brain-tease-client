@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { Quizzes } from 'src/classes/Quizzes';
+import { Quiz } from 'src/classes/Quiz';
 import { QuizzesService } from 'src/services/quizzes.service';
-import { Quiz } from 'src/types/quiz';
 
 @Component({
   selector: 'my-quizzes',
@@ -8,9 +9,10 @@ import { Quiz } from 'src/types/quiz';
   styleUrls: ['./my-quizzes.component.css']
 })
 export class MyQuizzesComponent {
-  quizzes: Quiz[] = [];
+  quizzes: Quizzes;
 
   constructor(private quizzesService: QuizzesService){
+    this.quizzes = new Quizzes();
   }
 
   ngOnInit(): void{
@@ -18,19 +20,17 @@ export class MyQuizzesComponent {
   }
 
   private getAll(): void{
-    this.quizzesService.getAll().subscribe(quizzes => this.quizzes = quizzes);
+    this.quizzesService.getAll().subscribe(quizzes => this.quizzes.addAll(quizzes));
   }
 
-  public deleteQuiz(id: string): void{
-    this.quizzesService.deleteById(id).subscribe(() => {
-      this.quizzes = this.quizzes.filter(
-        quizzes => quizzes.id !== id
-      );
+  public deleteQuiz(quiz: Quiz): void{
+    this.quizzesService.deleteById(quiz.id).subscribe(() => {
+      this.quizzes.removeQuiz(quiz);
     });;
   }
 
   public createClicked(): void{
-    this.quizzesService.createQuiz('azerty', 'desc', '1').subscribe(() => {
+    this.quizzesService.createQuiz('test', 'oui', '1').subscribe(() => {
       this.getAll();
     })
   }

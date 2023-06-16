@@ -3,7 +3,7 @@
     <ul>
         <li *ngFor="let quiz of quizzes">
             {{quiz.name}}
-            <button (click)="deleteQuiz(quiz.id)">Supprimer</button>
+            <button (click)="deleteQuiz(quiz)">Supprimer</button>
         </li>
     </ul>
 </div>

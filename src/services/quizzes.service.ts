@@ -2,13 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Quiz } from 'src/types/quiz';
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-type': 'application/json',
-  })
-}
+import { Quizzes } from 'src/classes/Quizzes';
+import { Quiz } from 'src/classes/Quiz';
 
 const httpOptionsWithAuthToken = (token: any) => ({
   headers: new HttpHeaders({
@@ -27,8 +22,8 @@ export class QuizzesService {
     private auth: AngularFireAuth
   ) {}
 
-  getAll(): Observable<Quiz[]>{
-    return this.http.get<Quiz[]>('/api/quizzes')
+  getAll(): Observable<Quizzes>{
+    return this.http.get<Quizzes>('/api/quizzes')
   }
 
   createQuiz(name: string, description: string, category_id: string): Observable<Quiz>{

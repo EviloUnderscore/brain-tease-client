@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Quizzes } from 'src/classes/Quizzes';
 import { QuizzesService } from 'src/services/quizzes.service';
-import { Quiz } from 'src/types/quiz';
 
 
 @Component({
@@ -9,24 +9,27 @@ import { Quiz } from 'src/types/quiz';
   styleUrls: ['./quiz-page.component.css']
 })
 export class QuizPageComponent implements OnInit{
-  quizzes: Quiz[] = [];
+  quizzes: Quizzes;
+  userSearch = '';
+  titleSearch = '';
 
   constructor(private quizzesService: QuizzesService){
+    this.quizzes = new Quizzes();
   }
 
   ngOnInit(): void{
-    this.getAll()
+    this.getAll();
+    console.log(this.quizzes);
+    
   }
 
   private getAll(): void{
-    this.quizzesService.getAll().subscribe(quizzes => this.quizzes = quizzes);
+    this.quizzesService.getAll().subscribe(quizzes => this.quizzes.addAll(quizzes));
   }
 
   public deleteQuiz(id: string): void{
     this.quizzesService.deleteById(id).subscribe(() => {
-      this.quizzes = this.quizzes.filter(
-        quizzes => quizzes.id !== id
-      );
+      
     });;
   }
 
@@ -34,5 +37,10 @@ export class QuizPageComponent implements OnInit{
     this.quizzesService.createQuiz('azerty', 'desc', '1').subscribe(() => {
       this.getAll();
     })
+  }
+
+  public updateSearch(): void{
+    console.log('coucou');
+    
   }
 }
