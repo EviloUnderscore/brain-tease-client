@@ -1,1 +1,9 @@
-<p>my-quizzes works!</p>
+<div class="root">
+    <button (click)="createClicked()">Créer un quiz</button>
+    <ul>
+        <li *ngFor="let quiz of quizzes">
+            {{quiz.name}}
+            <button (click)="deleteQuiz(quiz.id)">Supprimer</button>
+        </li>
+    </ul>
+</div>

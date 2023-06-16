@@ -1,9 +1,16 @@
 <div class="root">
-    <button (click)="createClicked()">Créer un quiz</button>
-    <ul>
+    <header class="quiz-head">
+        <h2>Tous nos quiz</h2>
+        <div class="search-bar">
+            <input type="text" placeholder="rechercher par auteurs">
+            <input type="text" placeholder="rechercher par titre">
+        </div>
+    </header>
+    
+    <ul class="quiz-main">
         <li *ngFor="let quiz of quizzes">
-            {{quiz.name}}
-            <button (click)="deleteQuiz(quiz.id)">Supprimer</button>
+            <quiz-item [quiz]="quiz"></quiz-item>
         </li>
     </ul>
+    
 </div>

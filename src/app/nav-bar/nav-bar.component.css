@@ -10,8 +10,9 @@
     background-color: rgb(31 41 55);
 }
 
-.title-section{
+.title-section *{
     text-align: center;
+    color: white;
 }
 
 .btn-area{

@@ -2,7 +2,7 @@
     <div class="user-area" *ngIf="auth.user | async" >
         <div *ngIf="(isLargeScreen$ | async)">
             <a class="link" [routerLink]="['/home']" routerLinkActive="active-link">Accueil</a>
-            <a class="link" [routerLink]="['/my-quizzes']" routerLinkActive="active-link">Mes quizzes</a>
+            <a class="link" [routerLink]="['/my-quizzes']" routerLinkActive="active-link">Mes quiz</a>
         </div>
         <div *ngIf="!(isLargeScreen$ | async)" class="menu-db">
             <div (click)="dropdownClicked()" class="link">
@@ -13,6 +13,7 @@
             <div *ngIf="dropdown" class="dropdown">
                 <a class="link" [routerLink]="['/home']" routerLinkActive="active-link-db" (click)="dropdownClicked()">Accueil</a>
                 <a class="link" [routerLink]="['/my-quizzes']" routerLinkActive="active-link-db" (click)="dropdownClicked()">Mes quizzes</a>
+                <a class="link" (click)="signOutClicked()">Déconnexion</a>
             </div>
         </div>
     </div>
@@ -22,10 +23,5 @@
     </div>
     <div class="btn-area" *ngIf="auth.user | async" >
         <button *ngIf="(isLargeScreen$ | async)" class="btn btn-secondary" (click)="signOutClicked()">Déconnexion</button>
-        <button *ngIf="!(isLargeScreen$ | async)" class="btn btn-secondary p-1" (click)="signOutClicked()">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="svg">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
-            </svg>
-        </button>
     </div>
 </div>

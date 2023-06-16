@@ -1,0 +1,37 @@
+.root{
+    margin-top: 1rem;
+}
+
+.quiz-head{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.search-bar{
+    display: flex;
+    gap: 2vw;
+}
+
+.search-bar input {
+    width: 25vw;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 2px 2px 3px 1px rgba(31, 41, 55, 0.25);
+    padding-left: 1vw;
+}
+
+.search-bar input:focus-visible{
+    outline: solid rgba(31, 41, 55, 0.9);
+}
+
+.quiz-main{
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    padding-left: 0;
+}
+
+.quiz-main li{
+    list-style: none;
+}
