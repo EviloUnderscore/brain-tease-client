@@ -2,11 +2,11 @@
 
     <nav-bar></nav-bar>
 
-    <div id="max-width-column" *ngIf="auth.user | async">
+    <div *ngIf="auth.user | async">
         <app-page></app-page>
     </div>
 
-    <div id="max-width-column" *ngIf="!(auth.user | async)">
+    <div *ngIf="!(auth.user | async)">
         <login-page></login-page>
     </div>
 

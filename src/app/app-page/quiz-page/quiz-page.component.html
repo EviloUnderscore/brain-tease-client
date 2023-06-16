@@ -1,6 +1,6 @@
 <div class="root">
     <button (click)="createClicked()">Créer un quiz</button>
-    <ul>h
+    <ul>
         <li *ngFor="let quiz of quizzes">
             {{quiz.name}}
             <button (click)="deleteQuiz(quiz.id)">Supprimer</button>
