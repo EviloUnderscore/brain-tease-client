@@ -19,7 +19,7 @@ export class QuizzesService {
 
   constructor(
     private http: HttpClient,
-    private auth: AngularFireAuth
+    private auth: AngularFireAuth,
   ) {}
 
   getAll(): Observable<Quizzes>{

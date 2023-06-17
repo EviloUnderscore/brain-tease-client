@@ -1,6 +1,6 @@
 .root{
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: space-between;
     background-color: rgb(31, 41, 55);
     border-radius: 5px;
@@ -14,27 +14,8 @@
 
 .main{
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid white;
-    padding-bottom: 3vh;
-}
-
-.questions{
-    font-size: larger;
-    margin: 0;
-    flex-basis: 33.3%;
-    text-align: center;
-}
-
-.author{
-    margin-top: 1vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.author *{
-    margin: 0;
 }
 
 .bold {
@@ -45,7 +26,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    flex-basis: 33.3%;
+    flex-basis: 66.6%;
 }
 
 .title-section *{
@@ -55,15 +36,23 @@
 
 .btn-section{
     display: flex;
+    gap: 2vw;
     justify-content: end;
     align-items: center;
     flex-basis: 33.3%;
 }
 
-.btn-primary{
-    background-color: white;
+.btn-quiz{
     border: none;
     color: rgb(31, 41, 55) !important;
     font-weight: 500;
     padding: 1.5vh 2vw;
+}
+
+.btn-primary{
+    background-color: white;
+}
+
+.btn-danger{
+    color: white !important;
 }

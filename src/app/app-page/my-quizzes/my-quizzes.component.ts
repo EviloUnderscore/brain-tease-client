@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Quizzes } from 'src/classes/Quizzes';
 import { Quiz } from 'src/classes/Quiz';
 import { QuizzesService } from 'src/services/quizzes.service';
+import { QuestionsService } from 'src/services/questions.service';
 
 @Component({
   selector: 'my-quizzes',
@@ -11,7 +12,9 @@ import { QuizzesService } from 'src/services/quizzes.service';
 export class MyQuizzesComponent {
   quizzes: Quizzes;
 
-  constructor(private quizzesService: QuizzesService){
+  constructor(
+    private quizzesService: QuizzesService,
+    private questionsService: QuestionsService,){
     this.quizzes = new Quizzes();
   }
 
@@ -29,9 +32,13 @@ export class MyQuizzesComponent {
   }
 
   public deleteQuiz(quiz: Quiz): void{
-    this.quizzesService.deleteById(quiz.id).subscribe(() => {
-      this.quizzes.removeQuiz(quiz);
-    });;
+    this.questionsService.deleteByQuizId(quiz.id).subscribe(() => {
+      this.quizzesService.deleteById(quiz.id).subscribe(() => {
+        this.quizzes.removeQuiz(quiz);
+      });
+    });
+
+    
   }
 
   public createClicked(): void{

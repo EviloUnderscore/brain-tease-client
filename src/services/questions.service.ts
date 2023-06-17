@@ -15,4 +15,8 @@ export class QuestionsService {
   getAll(): Observable<QuestionsCount[]>{
     return this.http.get<QuestionsCount[]>('/api/questions/count')
   }
+
+  deleteByQuizId(id: string): Observable<any>{
+    return this.http.delete<any>(`/api/questions/${id}`);
+  }
 }

@@ -5,14 +5,13 @@
             <button class="btn btn-primary" (click)="createClicked()">Créer un quiz</button>
         </div>
         <div class="search-bar">
-            <input type="text" placeholder="rechercher par titre">
+            <input type="text" placeholder="Rechercher par titre">
         </div>
     </header>
     
-    <ul>
+    <ul class="quiz-main">
         <li *ngFor="let quiz of quizzes">
-            {{quiz.name}}
-            <button (click)="deleteQuiz(quiz)">Supprimer</button>
+            <my-quiz-item [quiz]="quiz" (deletePressed)="deleteQuiz($event)"></my-quiz-item>
         </li>
     </ul>
 </div>

@@ -16,6 +16,7 @@ import { QuizPlayComponent } from './app-page/quiz-play/quiz-play.component';
 import { MyQuizzesComponent } from './app-page/my-quizzes/my-quizzes.component';
 import { QuizUpdateComponent } from './app-page/quiz-update/quiz-update.component';
 import { QuizItemComponent } from './app-page/quiz-page/quiz-item/quiz-item.component';
+import { MyQuizItemComponent } from './app-page/my-quizzes/my-quiz-item/my-quiz-item.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { QuizItemComponent } from './app-page/quiz-page/quiz-item/quiz-item.comp
     MyQuizzesComponent,
     QuizUpdateComponent,
     QuizItemComponent,
+    MyQuizItemComponent,
 
   ],
   imports: [

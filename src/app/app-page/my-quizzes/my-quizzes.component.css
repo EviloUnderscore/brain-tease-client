@@ -46,3 +46,14 @@
 .title{
     flex-basis: 33.3%;
 }
+
+.quiz-main{
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    padding-left: 0;
+}
+
+.quiz-main li{
+    list-style: none;
+}
