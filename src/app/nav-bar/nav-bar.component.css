@@ -40,6 +40,10 @@
     border-bottom: 1px solid white;
 }
 
+.db-link:hover{
+    background-color: #6c757d89;
+}
+
 .svg{
     width: 25px;
     height: 25px;

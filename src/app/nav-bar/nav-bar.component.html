@@ -11,9 +11,9 @@
                 </svg>
             </div>
             <div *ngIf="dropdown" class="dropdown">
-                <a class="link" [routerLink]="['/home']" routerLinkActive="active-link-db" (click)="dropdownClicked()">Accueil</a>
-                <a class="link" [routerLink]="['/my-quizzes']" routerLinkActive="active-link-db" (click)="dropdownClicked()">Mes quizzes</a>
-                <a class="link" (click)="signOutClicked()">Déconnexion</a>
+                <a class="link db-link" [routerLink]="['/home']" routerLinkActive="active-link-db" (click)="dropdownClicked()">Accueil</a>
+                <a class="link db-link" [routerLink]="['/my-quizzes']" routerLinkActive="active-link-db" (click)="dropdownClicked()">Mes quizzes</a>
+                <a class="link db-link" (click)="signOutClicked()">Déconnexion</a>
             </div>
         </div>
     </div>
