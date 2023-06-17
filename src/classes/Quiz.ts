@@ -7,6 +7,8 @@ export class Quiz{
     category_id: string;
     user_id: string;
     authorName: string;
+    created_at: Date;
+    updated_at: Date;
     category: Category;
 
     constructor(){
@@ -16,6 +18,8 @@ export class Quiz{
         this.category_id = '';
         this.user_id = '';
         this.authorName= '';
+        this.created_at = new Date();
+        this.updated_at = new Date();
         this.category = new Category();
     }
 
@@ -26,5 +30,8 @@ export class Quiz{
         this.category_id = quiz.category_id;
         this.user_id = quiz.user_id;
         this.authorName = quiz.authorName;
+        this.created_at = quiz.created_at;
+        this.updated_at = quiz.updated_at;
+
     }
 }

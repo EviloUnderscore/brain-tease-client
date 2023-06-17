@@ -24,6 +24,7 @@ export class MyQuizzesComponent {
       const newQuizzes = new Quizzes()
       newQuizzes.addAll(quizzes);
       this.quizzes = newQuizzes;
+      this.quizzes.sortByDate();
     });
   }
 
@@ -34,7 +35,7 @@ export class MyQuizzesComponent {
   }
 
   public createClicked(): void{
-    this.quizzesService.createQuiz('test', 'oui', '1').subscribe(() => {
+    this.quizzesService.createQuiz('Lorem dswcqd', 'sdvszvqvqv', '1').subscribe(() => {
       this.getAll();
     })
   }

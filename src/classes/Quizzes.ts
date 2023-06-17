@@ -35,6 +35,14 @@ export class Quizzes {
         return this.quizzes.map(quiz => quiz.toString()).join("\n");
     }
 
+    public sortByDate(){
+        this.quizzes.sort((a, b) => {
+            const dateA = new Date(a.created_at);
+            const dateB = new Date(b.created_at);
+            return dateA.getTime() - dateB.getTime();
+        });
+    }
+
     [Symbol.iterator]() {
         let index = 0;
         const quizzes = this.quizzes;
