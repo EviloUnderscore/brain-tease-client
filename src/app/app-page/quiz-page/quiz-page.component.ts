@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from 'src/classes/Category';
-import { Quiz } from 'src/classes/Quiz';
 import { Quizzes } from 'src/classes/Quizzes';
-import { User } from 'src/classes/User';
-import { CategoriesService } from 'src/services/category.service';
 import { QuizzesService } from 'src/services/quizzes.service';
-import { UsersService } from 'src/services/users.service';
 
 
 @Component({
@@ -15,6 +10,7 @@ import { UsersService } from 'src/services/users.service';
 })
 export class QuizPageComponent implements OnInit{
   quizzes: Quizzes;
+  filterdQuizzes: Quizzes;
   users: any;
   userSearch = '';
   titleSearch = '';
@@ -23,21 +19,30 @@ export class QuizPageComponent implements OnInit{
     private quizzesService: QuizzesService)
   {
     this.quizzes = new Quizzes();
-
+    this.filterdQuizzes = new Quizzes();
   }
 
   ngOnInit(): void{
-    this.getAll().then(() => {
-      console.log(222);
-    });
+    this.getAll();
   }
 
   private async getAll(): Promise<void>{
-    this.quizzesService.getAll().subscribe(quizzes => this.quizzes.addAll(quizzes));
+    this.quizzesService.getAll().subscribe(quizzes => {
+      this.quizzes.addAll(quizzes);
+      this.filterdQuizzes.addAll(quizzes);
+    });
   }
 
   public updateSearch(): void{
-    console.log('coucou');
     
+    const clonedQuizzes = this.quizzes.clone();    
+    
+    const filteredQuizzes = clonedQuizzes.quizzes.filter((quiz) => {
+      const containsAuthorName = quiz.authorName.toLowerCase().includes(this.userSearch.toLowerCase());
+      const containsQuizName = quiz.name.toLowerCase().includes(this.titleSearch.toLowerCase());
+      return containsAuthorName && containsQuizName;
+    });
+
+    this.filterdQuizzes.quizzes = filteredQuizzes;
   }
 }

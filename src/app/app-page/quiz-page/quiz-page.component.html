@@ -8,7 +8,7 @@
     </header>
     
     <ul class="quiz-main">
-        <li *ngFor="let quiz of quizzes">
+        <li *ngFor="let quiz of filterdQuizzes">
             <quiz-item [quiz]="quiz"></quiz-item>
         </li>
     </ul>

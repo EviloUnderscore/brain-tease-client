@@ -16,6 +16,17 @@ export class Quizzes {
         }       
     }
 
+    public clone(): Quizzes {
+        const clonedQuizzes = new Quizzes();
+        
+        for (const quiz of this.quizzes) {
+            const clonedQuiz = quiz.clone();
+            clonedQuizzes.addQuiz(clonedQuiz);
+        }
+        
+        return clonedQuizzes;
+    }
+
     public addQuiz(quiz: Quiz) {
         this.quizzes.push(quiz);
     }
