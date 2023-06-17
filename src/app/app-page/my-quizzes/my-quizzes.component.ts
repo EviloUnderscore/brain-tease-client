@@ -3,6 +3,7 @@ import { Quizzes } from 'src/classes/Quizzes';
 import { Quiz } from 'src/classes/Quiz';
 import { QuizzesService } from 'src/services/quizzes.service';
 import { QuestionsService } from 'src/services/questions.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'my-quizzes',
@@ -11,19 +12,28 @@ import { QuestionsService } from 'src/services/questions.service';
 })
 export class MyQuizzesComponent {
   quizzes: Quizzes;
+  userName:  string | null = null;
+  userId:  string | null = null;
 
   constructor(
     private quizzesService: QuizzesService,
-    private questionsService: QuestionsService,){
+    private questionsService: QuestionsService,
+    private auth: AngularFireAuth){
     this.quizzes = new Quizzes();
   }
 
   ngOnInit(): void{
-    this.getAll()
+    this.auth.user.subscribe(user => {
+      if (user) {
+        this.userName = user.displayName;
+        this.userId = user.uid;
+      }
+      this.getAll();
+    });
   }
 
   private getAll(): void{
-    this.quizzesService.getByUser('4FLg22en5aYMob9Sod3oUdCkCO33').subscribe(quizzes => {
+    this.quizzesService.getByUser((this.userId as string)).subscribe(quizzes => {
       const newQuizzes = new Quizzes()
       newQuizzes.addAll(quizzes);
       this.quizzes = newQuizzes;
