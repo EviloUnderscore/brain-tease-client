@@ -34,10 +34,7 @@ export class QuizPageComponent implements OnInit{
   }
 
   public updateSearch(): void{
-    
-    const clonedQuizzes = this.quizzes.clone();    
-    
-    const filteredQuizzes = clonedQuizzes.quizzes.filter((quiz) => {
+    const filteredQuizzes = this.quizzes.quizzes.filter((quiz) => {
       const containsAuthorName = quiz.authorName.toLowerCase().includes(this.userSearch.toLowerCase());
       const containsQuizName = quiz.name.toLowerCase().includes(this.titleSearch.toLowerCase());
       return containsAuthorName && containsQuizName;
