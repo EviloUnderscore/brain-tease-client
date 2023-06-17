@@ -20,9 +20,7 @@ export class QuizPageComponent implements OnInit{
   titleSearch = '';
 
   constructor(
-    private quizzesService: QuizzesService,
-    private usersService: UsersService,
-    private categoriesService: CategoriesService)
+    private quizzesService: QuizzesService)
   {
     this.quizzes = new Quizzes();
 
