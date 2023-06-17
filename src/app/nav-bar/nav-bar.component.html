@@ -19,7 +19,7 @@
     </div>
     <div class="title-section">
         <h1 class="m-0">Brain Tease</h1>
-        <p *ngIf="(isLargeScreen$ | async)" class="m-0">Bonjour {{userName}}</p>
+        <p *ngIf="(isLargeScreen$ | async) && (auth.user | async)" class="m-0">Bonjour {{userName}}</p>
     </div>
     <div class="btn-area" *ngIf="auth.user | async" >
         <button *ngIf="(isLargeScreen$ | async)" class="btn btn-secondary" (click)="signOutClicked()">Déconnexion</button>

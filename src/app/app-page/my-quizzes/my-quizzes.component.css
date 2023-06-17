@@ -1,0 +1,48 @@
+.root{
+    display: flex;
+    flex-direction: column;
+}
+
+.quiz-head{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.search-bar{
+    display: flex;
+    gap: 2vw;
+    flex-basis: 33.3%;
+    justify-content: end;
+}
+
+.search-bar input {
+    width: 25vw;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 2px 2px 3px 1px rgba(31, 41, 55, 0.25);
+    padding-left: 1vw;
+}
+
+.search-bar input:focus-visible{
+    outline: solid rgba(31, 41, 55, 0.9);
+}
+
+.btn-primary{
+    background-color: rgb(31, 41, 55);
+    border: none;
+    font-weight: 500;
+    padding: 1.5vh 2vw;
+    min-width: 15vw;
+    box-shadow: 1px 1px 3px 0px rgba(31, 41, 55, 0.366);
+}
+
+.btn-section{
+    display: flex;
+    justify-content: center;
+    flex-basis: 33.3%;
+}
+
+.title{
+    flex-basis: 33.3%;
+}

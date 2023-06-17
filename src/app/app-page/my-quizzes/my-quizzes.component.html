@@ -1,5 +1,14 @@
 <div class="root">
-    <button (click)="createClicked()">Créer un quiz</button>
+    <header class="quiz-head">
+        <h2 class="title">Vos quiz</h2>
+        <div class="btn-section">
+            <button class="btn btn-primary" (click)="createClicked()">Créer un quiz</button>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="rechercher par titre">
+        </div>
+    </header>
+    
     <ul>
         <li *ngFor="let quiz of quizzes">
             {{quiz.name}}
