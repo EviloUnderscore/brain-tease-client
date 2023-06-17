@@ -30,6 +30,7 @@ export class QuizPageComponent implements OnInit{
     this.quizzesService.getAll().subscribe(quizzes => {
       this.quizzes.addAll(quizzes);
       this.filterdQuizzes.addAll(quizzes);
+      this.filterdQuizzes.sortByDate();
     });
   }
 

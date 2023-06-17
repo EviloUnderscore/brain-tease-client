@@ -1,6 +1,14 @@
-<p>ID :{{quiz.id}}</p>
-<p>NAME: {{quiz.name }}</p>
-<p>DECSCRIPTION: {{quiz.description}}</p>
-<p>USER: {{quiz.authorName}}</p>
-<p>DATE: {{quiz.created_at}}</p>
-<p>CATEGORY: {{quiz.category.name}}</p>
+<div class="root">
+    <div class="main">
+        <div class="title-section">
+            <h2>{{quiz.name}}</h2> 
+        </div>
+        <p class="questions">Nombre de questions : ??</p>
+        <div class="btn-section">
+            <button class="btn btn-primary">Participer</button>
+        </div>
+    </div>
+    <div class="author">
+        <p>Réalisé par <span class="bold">{{quiz.authorName}}</span></p>
+    </div>
+</div>

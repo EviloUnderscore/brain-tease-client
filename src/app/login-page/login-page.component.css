@@ -1,3 +1,7 @@
+.root *{
+    color: white;
+}
+
 .login-area{
     display: flex;
     flex-direction: column;

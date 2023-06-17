@@ -35,7 +35,7 @@ export class MyQuizzesComponent {
   }
 
   public createClicked(): void{
-    this.quizzesService.createQuiz('Lorem dswcqd', 'sdvszvqvqv', '1').subscribe(() => {
+    this.quizzesService.createQuiz('Questionnaire sur la nature humaine', 'sdvszvqvqv', '1').subscribe(() => {
       this.getAll();
     })
   }
