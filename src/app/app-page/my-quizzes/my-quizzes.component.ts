@@ -23,7 +23,7 @@ export class MyQuizzesComponent {
   }
 
   private getAll(): void{
-    this.quizzesService.getAll().subscribe(quizzes => {
+    this.quizzesService.getByUser('4FLg22en5aYMob9Sod3oUdCkCO33').subscribe(quizzes => {
       const newQuizzes = new Quizzes()
       newQuizzes.addAll(quizzes);
       this.quizzes = newQuizzes;
@@ -37,8 +37,6 @@ export class MyQuizzesComponent {
         this.quizzes.removeQuiz(quiz);
       });
     });
-
-    
   }
 
   public createClicked(): void{

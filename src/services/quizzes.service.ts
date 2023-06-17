@@ -26,6 +26,10 @@ export class QuizzesService {
     return this.http.get<Quizzes>('/api/quizzes')
   }
 
+  getByUser(id: string):  Observable<Quizzes>{
+    return this.http.get<Quizzes>(`/api/quizzes/user/${id}`)
+  }
+
   createQuiz(name: string, description: string, category_id: string): Observable<Quiz>{
     return new Observable<Quiz>(observer => {
       this.auth.user.subscribe(user => {
@@ -41,6 +45,12 @@ export class QuizzesService {
   }
 
   deleteById(id: string): Observable<any>{
-    return this.http.delete<Quiz>(`/api/quizzes/${id}`);
+    return new Observable<any>(observer => {
+      this.auth.user.subscribe(user => {
+        user && user.getIdToken().then(token => {
+          this.http.delete<Quiz>(`/api/quizzes/${id}`, httpOptionsWithAuthToken(token)).subscribe(() => observer.next());
+        })
+      })
+    })
   }
 }

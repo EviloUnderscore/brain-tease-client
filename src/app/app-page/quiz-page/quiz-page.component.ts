@@ -14,7 +14,6 @@ export class QuizPageComponent implements OnInit{
   quizzes: Quizzes;
   filterdQuizzes: Quizzes;
   questionsCount: QuestionsCount;
-  users: any;
   userSearch = '';
   titleSearch = '';
 
