@@ -9,7 +9,7 @@
     
     <ul class="quiz-main">
         <li *ngFor="let quiz of filterdQuizzes">
-            <quiz-item [quiz]="quiz"></quiz-item>
+            <quiz-item [quiz]="quiz" [questionsCount]="questionsCount"></quiz-item>
         </li>
     </ul>
     

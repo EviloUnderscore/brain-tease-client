@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { QuestionsCount } from 'src/classes/QuestionsCount';
 import { Quizzes } from 'src/classes/Quizzes';
+import { QuestionsService } from 'src/services/questions.service';
 import { QuizzesService } from 'src/services/quizzes.service';
 
 
@@ -11,19 +13,24 @@ import { QuizzesService } from 'src/services/quizzes.service';
 export class QuizPageComponent implements OnInit{
   quizzes: Quizzes;
   filterdQuizzes: Quizzes;
+  questionsCount: QuestionsCount;
   users: any;
   userSearch = '';
   titleSearch = '';
 
   constructor(
-    private quizzesService: QuizzesService)
+    private quizzesService: QuizzesService,
+    private questionsService: QuestionsService)
   {
     this.quizzes = new Quizzes();
     this.filterdQuizzes = new Quizzes();
+    this.questionsCount = new QuestionsCount();
   }
 
   ngOnInit(): void{
-    this.getAll();
+    this.getAll().then(() => {
+      this.getQuestionsCount();
+    });
   }
 
   private async getAll(): Promise<void>{
@@ -32,6 +39,12 @@ export class QuizPageComponent implements OnInit{
       this.filterdQuizzes.addAll(quizzes);
       this.filterdQuizzes.sortByDate();
     });
+  }
+
+  private async getQuestionsCount(): Promise<void>{
+    this.questionsService.getAll().subscribe(questions => {
+      this.questionsCount.addAll(questions);
+    })
   }
 
   public updateSearch(): void{
