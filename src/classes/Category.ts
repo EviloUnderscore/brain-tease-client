@@ -6,4 +6,9 @@ export class Category{
         this.id = '';
         this.name = '';
     }
+
+    public serialize(cat: any){
+        this.id = cat.id;
+        this.name = cat.name;
+    }
 }

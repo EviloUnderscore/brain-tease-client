@@ -20,7 +20,11 @@ export class MyQuizzesComponent {
   }
 
   private getAll(): void{
-    this.quizzesService.getAll().subscribe(quizzes => this.quizzes.addAll(quizzes));
+    this.quizzesService.getAll().subscribe(quizzes => {
+      const newQuizzes = new Quizzes()
+      newQuizzes.addAll(quizzes);
+      this.quizzes = newQuizzes;
+    });
   }
 
   public deleteQuiz(quiz: Quiz): void{

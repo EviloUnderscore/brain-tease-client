@@ -34,6 +34,6 @@ export class QuizItemComponent {
   }
 
   private getCategory(): void{
-    this.categoryService.getById(this.quiz.category_id).subscribe(category => this.category = category);
+    this.categoryService.getById(this.quiz.category_id).subscribe(category => this.category.serialize(category));
   }
 }
