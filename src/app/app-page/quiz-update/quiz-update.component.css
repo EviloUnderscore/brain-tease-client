@@ -70,7 +70,17 @@ input, textarea, select{
 }
 
 .submit-btn{
-    margin-top: 15vh;
+    background-color: rgba(31, 41, 55);
+    border: none;
+    width: 20vw;
+    height: 7vh;
+    font-weight: 600;
+}
+
+.submit-area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .informations, .questions{

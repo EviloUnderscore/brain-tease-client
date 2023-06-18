@@ -41,7 +41,7 @@ export class QuizPageComponent implements OnInit{
   }
 
   private async getQuestionsCount(): Promise<void>{
-    this.questionsService.getAll().subscribe(questions => {
+    this.questionsService.getQuestionCount().subscribe(questions => {
       this.questionsCount.addAll(questions);
     })
   }

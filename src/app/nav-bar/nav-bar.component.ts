@@ -34,6 +34,7 @@ export class NavBarComponent {
 
   signOutClicked(): void{
     this.auth.signOut();
+    location.reload();
   }
 
   dropdownClicked(): void{
