@@ -1,0 +1,37 @@
+.quiz-head{
+    position: relative;
+    display: flex;
+}
+
+.quiz-head h2{
+    flex-basis: 33.33%;
+}
+
+.questions{
+    text-align: center;
+}
+
+.informations{
+    text-align: right;
+}
+
+.starting{
+    display: flex;
+    justify-content: center;
+    margin: 20vh 0;
+}
+
+.btn-primary{
+    height: 15vh;
+    width: 35vw;
+    font-size: x-large;
+    font-weight: 700;
+    background-color: rgb(31, 41, 55);
+    border: none;
+    
+}
+
+.btn-primary:hover{
+    box-shadow: inset 1px 1px 5px rgba(31, 41, 55, 0.5);
+    background-color: rgb(43, 57, 77);
+}

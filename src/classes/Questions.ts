@@ -31,6 +31,10 @@ export class Questions {
         return this.questions.length <= 0;
     }
 
+    public count(): number{
+        return this.questions.length;
+    }
+
     [Symbol.iterator]() {
         let index = 0;
         const categories = this.questions;

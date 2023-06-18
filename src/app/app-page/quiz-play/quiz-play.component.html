@@ -1,1 +1,12 @@
-<h2>{{quiz.name}}</h2>
+<div class="root">
+    <header class="quiz-head">
+        <h2 class="title">{{quiz.name}}</h2>
+        <h2 class="questions">0/{{questions.count()}}</h2>
+        <h2 class="informations"></h2>
+    </header>
+    <section class="quiz-play">
+        <div *ngIf="!isPlaying" class="starting">
+            <button class="btn btn-primary" (click)="startingQuiz()">Commencer le quiz !</button>
+        </div>
+    </section>
+</div>

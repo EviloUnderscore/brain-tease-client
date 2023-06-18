@@ -31,14 +31,22 @@ export class QuizUpdateComponent {
   }
 
   ngOnInit(): void{
+    this.getQuiz();
+    this.getCategories();
+  }
+
+  private getQuiz(): void{
     if(!this.isCreation()){
-      const quizId = (this.route.snapshot.paramMap.get('id') as string)
+      const quizId = (this.route.snapshot.paramMap.get('id') as string);
       this.quizzesService.getById(quizId).subscribe(quiz => this.quiz = quiz);
       this.questionsService.getByQuizId(quizId).subscribe(questions => {        
         this.questions.addAll(questions);
         this.hasQuestions();
       })
     }
+  }
+
+  private getCategories(): void{
     this.categoriesService.getAll().subscribe(categories => this.categories.addAll(categories));
   }
 
