@@ -48,6 +48,7 @@ export class MyQuizzesComponent {
     this.questionsService.deleteByQuizId(quiz.id).subscribe(() => {
       this.quizzesService.deleteById(quiz.id).subscribe(() => {
         this.quizzes.removeQuiz(quiz);
+        this.filteredQuizzes.removeQuiz(quiz);
       });
     });
   }
