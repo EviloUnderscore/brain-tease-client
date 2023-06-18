@@ -78,9 +78,13 @@ export class QuizUpdateComponent {
   }
 
   deleteQuestion(question: Question): void{
-    this.questionsService.deleteById(question.id).subscribe(() => {
+    if(question.id){
+      this.questionsService.deleteById(question.id).subscribe(() => {
+        this.questions.removeQuestion(question);
+      });
+    } else {
       this.questions.removeQuestion(question);
-    });
+    }
   }
 
   addQuestion(): void{
