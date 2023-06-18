@@ -36,7 +36,7 @@
     flex-basis: 30%;
 }
 
-.form-group input, .form-group textarea{
+.form-group input, .form-group textarea, .form-group select{
     flex-basis: 70%;
     border-radius: 5px;
     border: none;
@@ -54,7 +54,7 @@ input, textarea, select{
 
 
 .form-group select{
-    height: 3vh;
+    height: 5vh;
     border-radius: 5px;
     border: none;
     box-shadow: 2px 2px 3px 1px rgba(31, 41, 55, 0.25);
@@ -69,14 +69,22 @@ input, textarea, select{
     flex-basis: 70%;
 }
 
-.categories-area {
-    flex-basis: 30%;
-}
-
 .submit-btn{
     margin-top: 15vh;
 }
 
 .informations, .questions{
     margin-bottom: 2vh;
+}
+
+.error-message{
+    margin-top: -1vh;
+    color: red;
+    font-weight: 600;
+    text-align: end;
+}
+
+.category-error{
+    display: flex;
+    flex-direction: column;
 }
