@@ -34,9 +34,7 @@ export class QuizPlayComponent {
   }
 
   currentQuestionIndex(i: number): boolean{
-    console.log(this.currentQuestion == i);
-    
-    return this.currentQuestion == i;
+    return this.currentQuestion == i+1;
   }
 
   private getQuiz(): void{
