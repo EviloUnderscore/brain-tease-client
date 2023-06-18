@@ -5,7 +5,7 @@
         </div>
         <p class="questions">Nombre de questions : {{nbOfQuestions}}</p>
         <div class="btn-section">
-            <button class="btn btn-primary">Participer</button>
+            <button class="btn btn-primary" [routerLink]="['/play/' + quiz.id]">Participer</button>
         </div>
     </div>
     <div class="author">

@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: 'my-quizzes', component: MyQuizzesComponent, pathMatch: 'full'},
   {path: 'my-quizzes/create', component: QuizUpdateComponent, pathMatch: 'full'},
   {path: 'my-quizzes/edit/:id', component: QuizUpdateComponent, pathMatch: 'full'},
-  {path: 'play', component: QuizPlayComponent, pathMatch: 'full'},
+  {path: 'play/:id', component: QuizPlayComponent, pathMatch: 'full'},
 ];
 
 @NgModule({
