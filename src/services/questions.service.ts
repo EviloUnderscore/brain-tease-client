@@ -32,6 +32,16 @@ export class QuestionsService {
     return this.http.get<Questions>(`/api/questions/quiz/${id}`)
   }
 
+  deleteById(id: string): Observable<any>{
+    return new Observable<any>(observer => {
+      this.auth.user.subscribe(user => {
+        user && user.getIdToken().then(token => {
+          this.http.delete<any>(`/api/question/${id}`, httpOptionsWithAuthToken(token)).subscribe(() => observer.next());
+        })
+      })
+    })
+  }
+
   deleteByQuizId(id: string): Observable<any>{
     return this.http.delete<any>(`/api/questions/${id}`);
   }

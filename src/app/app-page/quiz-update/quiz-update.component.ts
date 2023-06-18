@@ -70,17 +70,17 @@ export class QuizUpdateComponent {
   addOrUpdateQuestion(question: Question, quiz: Quiz): void{
     if(question.id){
       this.questionsService.updateQuestion(question.id, quiz.id, question.question, question.answer, question.category, question.type_id, question.fake_answer_1, question.fake_answer_2, question.fake_answer_3)
-      .subscribe(() => {
-        console.log('Updated question');
-        
-      })
+      .subscribe()
     } else {
       this.questionsService.createQuestion(quiz.id, question.question, question.answer, question.category, question.type_id, question.fake_answer_1, question.fake_answer_2, question.fake_answer_3)
-      .subscribe(() => {
-        console.log('Created question');
-        
-      })
+      .subscribe()
     }
+  }
+
+  deleteQuestion(question: Question): void{
+    this.questionsService.deleteById(question.id).subscribe(() => {
+      this.questions.removeQuestion(question);
+    });
   }
 
   addQuestion(): void{

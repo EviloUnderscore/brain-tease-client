@@ -14,6 +14,13 @@ export class Questions {
             this.addQuestion(question);
         }       
     }
+
+    public removeQuestion(question: Question) {        
+        const index = this.questions.indexOf(question);
+        if (index !== -1) {
+            this.questions.splice(index, 1);
+        }
+    }
   
   
     public addQuestion(q: Question) {
