@@ -14,6 +14,7 @@ export class QuizPlayComponent {
   quiz: Quiz;
   questions: Questions;
   isPlaying = false;
+  currentQuestion = 0;
 
   constructor(
     private quizzesService: QuizzesService,
@@ -29,6 +30,13 @@ export class QuizPlayComponent {
 
   startingQuiz(): void{
     this.isPlaying = true;
+    this.currentQuestion++;
+  }
+
+  currentQuestionIndex(i: number): boolean{
+    console.log(this.currentQuestion == i);
+    
+    return this.currentQuestion == i;
   }
 
   private getQuiz(): void{

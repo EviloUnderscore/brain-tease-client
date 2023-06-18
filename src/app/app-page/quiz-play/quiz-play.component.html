@@ -1,12 +1,19 @@
 <div class="root">
     <header class="quiz-head">
         <h2 class="title">{{quiz.name}}</h2>
-        <h2 class="questions">0/{{questions.count()}}</h2>
+        <h2 class="questions">{{currentQuestion}}/{{questions.count()}}</h2>
         <h2 class="informations"></h2>
     </header>
     <section class="quiz-play">
         <div *ngIf="!isPlaying" class="starting">
             <button class="btn btn-primary" (click)="startingQuiz()">Commencer le quiz !</button>
         </div>
+        <ul class="question-list">
+            <li *ngFor="let question of questions; let i = index">
+                <div *ngIf="currentQuestionIndex(i)" class="question-item">
+                    <h3>{{question.question}} ddd</h3>
+                </div>
+            </li>
+        </ul>
     </section>
 </div>
