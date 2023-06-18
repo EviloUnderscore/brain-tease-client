@@ -51,12 +51,12 @@
                         <li class="question-item" *ngFor="let question of questions">
                             <div class="form-main questions-form-area">
                                 <div class="form-group basis-1">
-                                    <label for="question">Question</label>
-                                    <textarea type="text" id="question" name="question" [(ngModel)]="question.question" required></textarea>
+                                    <label for="{{question.id}}">Question</label>
+                                    <textarea type="text" id="{{question.id}}" name="{{question.id}}" [(ngModel)]="question.question" required></textarea>
                                 </div>
                                 <div class="form-group basis-1">
-                                    <label for="answer">Réponse</label>
-                                    <textarea type="text" id="answer" name="answer" [(ngModel)]="question.answer" required></textarea>
+                                    <label for="answer-{{question.id}}">Réponse</label>
+                                    <textarea type="text" id="answer-{{question.id}}" name="answer-{{question.id}}" [(ngModel)]="question.answer" required></textarea>
                                 </div>
                                 <div class="btn-area basis-2">
                                     <a class="delete-btn">
@@ -69,9 +69,9 @@
 
                             <div class="fake-answers form-group">
                                 <label for="">Mauvaises réponses</label>
-                                <textarea type="text" id="answer" name="answer" [(ngModel)]="question.answer" required></textarea>
-                                <textarea type="text" id="answer" name="answer" [(ngModel)]="question.answer" required></textarea>
-                                <textarea type="text" id="answer" name="answer" [(ngModel)]="question.answer" required></textarea>
+                                <textarea type="text" id="fake-answer-1" name="fake-answer-1" [(ngModel)]="question.fake_answer_1" required></textarea>
+                                <textarea type="text" id="fake-answer-2" name="fake-answer-2" [(ngModel)]="question.fake_answer_2" required></textarea>
+                                <textarea type="text" id="fake-answer-3" name="fake-answer-3" [(ngModel)]="question.fake_answer_3" required></textarea>
                             </div>
                         </li>
                     </ul>

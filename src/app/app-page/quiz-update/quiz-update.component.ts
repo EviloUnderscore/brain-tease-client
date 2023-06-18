@@ -33,7 +33,7 @@ export class QuizUpdateComponent {
     if(!this.isCreation()){
       const quizId = (this.route.snapshot.paramMap.get('id') as string)
       this.quizzesService.getById(quizId).subscribe(quiz => this.quiz = quiz);
-      this.questionsService.getByQuizId(quizId).subscribe(questions => {
+      this.questionsService.getByQuizId(quizId).subscribe(questions => {        
         this.questions.addAll(questions);
         this.hasQuestions();
       })
