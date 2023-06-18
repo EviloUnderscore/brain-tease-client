@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Categories } from 'src/classes/Categories';
 import { Quiz } from 'src/classes/Quiz';
+import { CategoriesService } from 'src/services/category.service';
 
 @Component({
   selector: 'quiz-update',
@@ -12,9 +13,15 @@ export class QuizUpdateComponent {
   quiz: Quiz;
   categories: Categories;
 
-  constructor(private router: Router){
+  constructor(
+    private router: Router,
+    private categoriesService: CategoriesService){
     this.quiz = new Quiz();
     this.categories = new Categories();
+  }
+
+  ngOnInit(): void{
+    this.categoriesService.getAll().subscribe(categories => this.categories.addAll(categories));
   }
 
   isCreation(): boolean{

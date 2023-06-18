@@ -13,3 +13,70 @@
 .title{
     flex-basis: 66.6%;
 }
+
+.form-head{
+    display: flex;
+    gap: 2vw;
+}
+
+.form-main{
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+}
+
+.form-group{
+    font-weight: 500;
+    display: flex;
+    gap: 1vw;
+    flex-basis: 50%;
+}
+
+.form-group label{
+    flex-basis: 30%;
+}
+
+.form-group input, .form-group textarea{
+    flex-basis: 70%;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 2px 2px 3px 1px rgba(31, 41, 55, 0.25);
+    padding-left: 1vw;
+}
+
+.form-group textarea{
+    height: 10vh;
+}
+
+input, textarea, select{
+    color: rgb(31, 41, 55);
+}
+
+
+.form-group select{
+    height: 3vh;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 2px 2px 3px 1px rgba(31, 41, 55, 0.25);
+    padding: 0 1vw;
+}
+
+.form-title{
+    padding-bottom: 2vh;
+}
+
+.inputs-area {
+    flex-basis: 70%;
+}
+
+.categories-area {
+    flex-basis: 30%;
+}
+
+.submit-btn{
+    margin-top: 15vh;
+}
+
+.informations, .questions{
+    margin-bottom: 2vh;
+}

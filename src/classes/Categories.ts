@@ -7,6 +7,19 @@ export class Categories {
         this.categories = [];
     }
 
+    public addAll(categories: any){
+        for (let cat of categories) {
+            let category = new Category();
+            category.serialize(cat);
+            this.addQuiz(category);
+        }       
+    }
+  
+  
+    public addQuiz(cat: Category) {
+      this.categories.push(cat);
+    }
+
     public sortByName(){
         this.categories.sort((a, b) => {
             const nameA = a.name.toLowerCase();
