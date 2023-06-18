@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Categories } from 'src/classes/Categories';
+import { Questions } from 'src/classes/Questions';
 import { Quiz } from 'src/classes/Quiz';
 import { CategoriesService } from 'src/services/category.service';
+import { QuestionsService } from 'src/services/questions.service';
 import { QuizzesService } from 'src/services/quizzes.service';
 
 @Component({
@@ -13,16 +15,29 @@ import { QuizzesService } from 'src/services/quizzes.service';
 export class QuizUpdateComponent {
   quiz: Quiz;
   categories: Categories;
+  questions: Questions;
+  hasQuestion: boolean = false;
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private categoriesService: CategoriesService,
-    private quizzesService: QuizzesService){
-    this.quiz = new Quiz();
-    this.categories = new Categories();
+    private quizzesService: QuizzesService,
+    private questionsService: QuestionsService){
+      this.quiz = new Quiz();
+      this.categories = new Categories();
+      this.questions = new Questions();
   }
 
   ngOnInit(): void{
+    if(!this.isCreation()){
+      const quizId = (this.route.snapshot.paramMap.get('id') as string)
+      this.quizzesService.getById(quizId).subscribe(quiz => this.quiz = quiz);
+      this.questionsService.getByQuizId(quizId).subscribe(questions => {
+        this.questions.addAll(questions);
+        this.hasQuestions();
+      })
+    }
     this.categoriesService.getAll().subscribe(categories => this.categories.addAll(categories));
   }
 
@@ -44,5 +59,11 @@ export class QuizUpdateComponent {
       return false;
     }
     return true;
+  }
+
+  hasQuestions(): void{
+    if(!this.questions.isEmpty()){
+      this.hasQuestion = true;  
+    };
   }
 }

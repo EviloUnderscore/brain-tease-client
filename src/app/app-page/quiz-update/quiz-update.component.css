@@ -40,7 +40,7 @@
     flex-basis: 70%;
     border-radius: 5px;
     border: none;
-    box-shadow: 2px 2px 3px 1px rgba(31, 41, 55, 0.25);
+    box-shadow: 1px 1px 2px rgba(31, 41, 55, 0.25);
     padding-left: 1vw;
 }
 
@@ -57,12 +57,14 @@ input, textarea, select{
     height: 5vh;
     border-radius: 5px;
     border: none;
-    box-shadow: 2px 2px 3px 1px rgba(31, 41, 55, 0.25);
+    box-shadow: 1px 1px 2px rgba(31, 41, 55, 0.25);
     padding: 0 1vw;
 }
 
 .form-title{
     padding-bottom: 2vh;
+    display: flex;
+    justify-content: space-between;
 }
 
 .inputs-area {
@@ -83,8 +85,10 @@ input, textarea, select{
     align-items: center;
 }
 
-.informations, .questions{
+.informations, .questions, .quiz-head{
     margin-bottom: 2vh;
+    padding-bottom: 4vh;
+    border-bottom: 1px solid rgba(31, 41, 55);
 }
 
 .error-message{
@@ -96,5 +100,82 @@ input, textarea, select{
 
 .category-error{
     display: flex;
+    flex-direction: column;
+}
+
+.no-questions{
+    text-align: center;
+}
+
+.add-question{
+    display: flex;
+    justify-content: center;
+}
+
+.svg-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    background-color: rgba(31, 41, 55);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.svg{
+    width: 25px;
+    height: 25px;
+    color: white;
+}
+
+.question-list{
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    padding: 0;
+}
+
+.question-item{
+    list-style: none;
+    background-color: white;
+    box-shadow: 1px 1px 2px rgba(31, 41, 55, 0.25);
+    border-radius: 5px;
+    padding: 1rem;
+}
+
+.questions-form-area{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 2vh;
+}
+
+.questions-form-area textarea, .fake-answers textarea{
+    border: 1px solid rgba(31, 41, 55, 0.25);
+    height: 10vh;
+}
+
+.delete-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: #dc3545;
+    cursor: pointer;
+}
+
+.basis-1{
+    flex-basis: 45%;
+}
+
+.basis-2{
+    flex-basis: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fake-answers{
     flex-direction: column;
 }

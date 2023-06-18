@@ -20,6 +20,10 @@ export class Questions {
       this.questions.push(q);
     }
 
+    public isEmpty(): boolean{
+        return this.questions.length <= 0;
+    }
+
     [Symbol.iterator]() {
         let index = 0;
         const categories = this.questions;

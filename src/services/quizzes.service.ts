@@ -30,6 +30,10 @@ export class QuizzesService {
     return this.http.get<Quizzes>(`/api/quizzes/user/${id}`)
   }
 
+  getById(id: string): Observable<Quiz>{
+    return this.http.get<Quiz>(`/api/quizzes/${id}`)
+  }
+
   createQuiz(name: string, description: string, category_id: string): Observable<Quiz>{
     return new Observable<Quiz>(observer => {
       this.auth.user.subscribe(user => {
