@@ -48,9 +48,15 @@ export class QuizUpdateComponent {
 
   submitForm(): void{
     if(this.isFormValid()){
-      this.quizzesService.createQuiz(this.quiz.name, this.quiz.description, this.quiz.category_id).subscribe(() => {
-        this.router.navigate(['/my-quizzes']);
-      })
+      if(this.isCreation()){
+        this.quizzesService.createQuiz(this.quiz.name, this.quiz.description, this.quiz.category_id).subscribe(() => {
+          this.router.navigate(['/my-quizzes']);
+        })
+      } else {
+        this.quizzesService.updateQuiz(this.quiz.id, this.quiz.name, this.quiz.description, this.quiz.category_id).subscribe(() => {
+          this.router.navigate(['/my-quizzes']);
+        })
+      }
     }
   }
 

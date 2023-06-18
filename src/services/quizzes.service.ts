@@ -48,6 +48,20 @@ export class QuizzesService {
     })
   }
 
+  updateQuiz(id: string, name: string, description: string, category_id: string): Observable<Quiz>{
+    return new Observable<Quiz>(observer => {
+      this.auth.user.subscribe(user => {
+        user && user.getIdToken().then(token => {
+          this.http.post<Quiz>(
+            `/api/quizzes/update/${id}`,
+            { name, description, category_id },
+            httpOptionsWithAuthToken(token),
+          ).subscribe(() => observer.next());
+        })
+      })
+    })
+  }
+
   deleteById(id: string): Observable<any>{
     return new Observable<any>(observer => {
       this.auth.user.subscribe(user => {
