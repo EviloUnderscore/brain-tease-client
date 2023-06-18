@@ -11,12 +11,12 @@ export class Questions {
         for (let q of questions) {
             let question = new Question();
             question.serialize(q);
-            this.addQuiz(question);
+            this.addQuestion(question);
         }       
     }
   
   
-    public addQuiz(q: Question) {
+    public addQuestion(q: Question) {
       this.questions.push(q);
     }
 

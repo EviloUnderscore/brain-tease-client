@@ -15,7 +15,7 @@ export class Question {
         this.answer = '';
         this.category = '';
         this.quiz_id = '';
-        this.type_id = '';
+        this.type_id = '1';
         this.fake_answer_1 = '';
         this.fake_answer_2 = '';
         this.fake_answer_3 = '';
