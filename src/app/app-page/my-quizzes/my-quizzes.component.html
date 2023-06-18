@@ -5,12 +5,12 @@
             <button class="btn btn-primary" [routerLink]="['/my-quizzes/create']">Créer un quiz</button>
         </div>
         <div class="search-bar">
-            <input type="text" placeholder="Rechercher par titre">
+            <input type="text" placeholder="Rechercher par titre" [(ngModel)]="titleSearch" (ngModelChange)="updateSearch()">
         </div>
     </header>
     
     <ul class="quiz-main">
-        <li *ngFor="let quiz of quizzes">
+        <li *ngFor="let quiz of filteredQuizzes">
             <my-quiz-item [quiz]="quiz" (deletePressed)="deleteQuiz($event)"></my-quiz-item>
         </li>
     </ul>

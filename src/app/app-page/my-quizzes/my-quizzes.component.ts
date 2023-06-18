@@ -12,6 +12,8 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 })
 export class MyQuizzesComponent {
   quizzes: Quizzes;
+  filteredQuizzes: Quizzes;
+  titleSearch: string;
   userName:  string | null = null;
   userId:  string | null = null;
 
@@ -20,6 +22,8 @@ export class MyQuizzesComponent {
     private questionsService: QuestionsService,
     private auth: AngularFireAuth){
     this.quizzes = new Quizzes();
+    this.filteredQuizzes = new Quizzes();
+    this.titleSearch = '';
   }
 
   ngOnInit(): void{
@@ -34,10 +38,9 @@ export class MyQuizzesComponent {
 
   private getAll(): void{
     this.quizzesService.getByUser((this.userId as string)).subscribe(quizzes => {
-      const newQuizzes = new Quizzes()
-      newQuizzes.addAll(quizzes);
-      this.quizzes = newQuizzes;
-      this.quizzes.sortByDate();
+      this.quizzes.addAll(quizzes);
+      this.filteredQuizzes.addAll(quizzes);
+      this.filteredQuizzes.sortByDate();
     });
   }
 
@@ -53,5 +56,13 @@ export class MyQuizzesComponent {
     this.quizzesService.createQuiz('Questionnaire sur la nature humaine', 'sdvszvqvqv', '1').subscribe(() => {
       this.getAll();
     })
+  }
+
+  public updateSearch(): void{    
+    const filteredQuizzes = this.quizzes.quizzes.filter((quiz) => {
+      return quiz.name.toLowerCase().includes(this.titleSearch.toLowerCase());
+    });
+
+    this.filteredQuizzes.quizzes = filteredQuizzes;
   }
 }
