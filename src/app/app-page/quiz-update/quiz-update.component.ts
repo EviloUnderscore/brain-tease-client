@@ -50,16 +50,16 @@ export class QuizUpdateComponent {
   submitForm(): void{
     if(this.isFormValid()){
       if(this.isCreation()){
-        this.quizzesService.createQuiz(this.quiz.name, this.quiz.description, this.quiz.category_id).subscribe(() => {
+        this.quizzesService.createQuiz(this.quiz.name, this.quiz.description, this.quiz.category_id).subscribe(quiz => {          
           for (let question of this.questions){
-            this.addOrUpdateQuestion(question);
+            this.addOrUpdateQuestion(question, quiz);
           }
           this.router.navigate(['/my-quizzes']);
         })
       } else {
-        this.quizzesService.updateQuiz(this.quiz.id, this.quiz.name, this.quiz.description, this.quiz.category_id).subscribe(() => {
+        this.quizzesService.updateQuiz(this.quiz.id, this.quiz.name, this.quiz.description, this.quiz.category_id).subscribe(quiz => {
           for (let question of this.questions){
-            this.addOrUpdateQuestion(question);
+            this.addOrUpdateQuestion(question, quiz);
           }
           this.router.navigate(['/my-quizzes']);
         })
@@ -67,15 +67,15 @@ export class QuizUpdateComponent {
     }
   }
 
-  addOrUpdateQuestion(question: Question): void{
+  addOrUpdateQuestion(question: Question, quiz: Quiz): void{
     if(question.id){
-      this.questionsService.updateQuestion(question.id, this.quiz.id, question.question, question.answer, question.category, question.type_id, question.fake_answer_1, question.fake_answer_2, question.fake_answer_3)
+      this.questionsService.updateQuestion(question.id, quiz.id, question.question, question.answer, question.category, question.type_id, question.fake_answer_1, question.fake_answer_2, question.fake_answer_3)
       .subscribe(() => {
         console.log('Updated question');
         
       })
     } else {
-      this.questionsService.createQuestion(this.quiz.id, question.question, question.answer, question.category, question.type_id, question.fake_answer_1, question.fake_answer_2, question.fake_answer_3)
+      this.questionsService.createQuestion(quiz.id, question.question, question.answer, question.category, question.type_id, question.fake_answer_1, question.fake_answer_2, question.fake_answer_3)
       .subscribe(() => {
         console.log('Created question');
         

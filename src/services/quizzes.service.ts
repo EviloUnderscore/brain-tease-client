@@ -42,7 +42,7 @@ export class QuizzesService {
             '/api/quizzes/create',
             { name, description, category_id },
             httpOptionsWithAuthToken(token),
-          ).subscribe(() => observer.next());
+          ).subscribe(quiz => observer.next(quiz));
         })
       })
     })
@@ -56,7 +56,7 @@ export class QuizzesService {
             `/api/quizzes/update/${id}`,
             { name, description, category_id },
             httpOptionsWithAuthToken(token),
-          ).subscribe(() => observer.next());
+          ).subscribe(quiz => observer.next(quiz));
         })
       })
     })
