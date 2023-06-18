@@ -1,1 +1,30 @@
-<p>quiz-update works!</p>
+<div class="root">
+    <header class="quiz-head">
+        <h2 class="title">Création d'un nouveau Quiz</h2>
+        <div class="btn-section">
+            <button class="btn btn-danger">Annuler la création</button>
+        </div>
+    </header>
+    <div class="quiz-form">
+        <form (submit)="submitForm()">
+            <div class="form-group">
+              <label for="name">Titre du Quiz</label>
+              <input type="text" id="name" name="name" [(ngModel)]="quiz.name" required>
+            </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea id="description" name="description" [(ngModel)]="quiz.description" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="category_id">Catégorie</label>
+              <select id="category_id" name="category_id" [(ngModel)]="quiz.category_id" required>
+                <option value="">Sélectionner une catégorie</option>
+
+                <option value="1">Category 1</option>
+                <option value="2">Category 2</option>
+              </select>
+            </div>
+            <button class="btn btn-primary" type="submit">Ajouter</button>
+          </form>
+    </div>
+</div>

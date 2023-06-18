@@ -1,0 +1,15 @@
+.quiz-head{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.btn-section{
+    display: flex;
+    justify-content: end;
+    flex-basis: 33.3%;
+}
+
+.title{
+    flex-basis: 66.6%;
+}
