@@ -65,8 +65,6 @@ export class QuizPlayComponent {
   }
 
   isAnswerSelected(question: RandomAnswers): boolean {
-    console.log(question);
-    
     return question.answers.some((answer) => answer.selected);
   }
 
