@@ -17,12 +17,10 @@ export class QuizPlayComponent {
   quiz: Quiz;
   questions: Questions;
   questionsWithRandomAnswers: QuestionsWithAnswers;
-  isPlaying = true;
-  // isPlaying = false;
+  isPlaying = false;
   lastQuestion = false;
   currentQuestion = 0;
-  testOver = true;
-  // testOver = false;
+  testOver = false;
 
   constructor(
     private quizzesService: QuizzesService,
