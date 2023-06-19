@@ -9,25 +9,20 @@
             <button class="btn btn-primary" (click)="startingQuiz()">Commencer le quiz !</button>
         </div>
         <ul *ngIf="!testOver" class="question-list">
-            <ng-container *ngFor="let question of questions; let i = index">
+            <ng-container *ngFor="let question of questionsWithRandomAnswers; let i = index">
                 <li *ngIf="currentQuestionIndex(i)">
                     <div class="question-title">
                         <h3>{{question.question}}</h3>
                     </div>
+
                     <div class="answers">
-                        <a class="answer selected">
-                            <p >{{question.answer}}</p>
-                        </a>
-                        <a class="answer">
-                            <p>{{question.fake_answer_1}}</p>
-                        </a>
-                        <a class="answer">
-                            <p>{{question.fake_answer_2}}</p>
-                        </a>
-                        <a class="answer">
-                            <p>{{question.fake_answer_3}}</p>
-                        </a>
+                        <ng-container *ngFor="let answer of question.answers">
+                            <a class="answer"  [class.selected]="answer.selected" (click)="selectAnswer(answer, question)">
+                                <p>{{answer.text}}</p>
+                            </a>
+                        </ng-container>
                     </div>
+
                     <div class="next-btn">
                         <button *ngIf="!lastQuestion" class="btn btn-primary" (click)="nextQuestion()">Question quivante</button>
                         <button *ngIf="lastQuestion" class="btn btn-primary" (click)="endQuiz()">Terminer le Quiz</button>
