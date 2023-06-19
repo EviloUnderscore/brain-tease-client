@@ -8,8 +8,8 @@
         <div *ngIf="!isPlaying" class="starting">
             <button class="btn btn-primary" (click)="startingQuiz()">Commencer le quiz !</button>
         </div>
-        <ul class="question-list">
-            <li *ngFor="let question of questions; let i = index">
+        <ul *ngIf="!testOver" class="question-list">
+            <li *ngFor="let question of questions; let i = index" class="quiz-li">
                 <div *ngIf="currentQuestionIndex(i)" >
                     <div class="question-title">
                         <h3>{{question.question}}</h3>
@@ -35,5 +35,8 @@
                 </div>
             </li>
         </ul>
+        <div *ngIf="testOver">
+            <h3>Résultats</h3>
+        </div>
     </section>
 </div>

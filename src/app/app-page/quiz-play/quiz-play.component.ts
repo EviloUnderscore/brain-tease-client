@@ -16,6 +16,7 @@ export class QuizPlayComponent {
   isPlaying = false;
   lastQuestion = false;
   currentQuestion = 0;
+  testOver = false;
 
   constructor(
     private quizzesService: QuizzesService,
@@ -41,7 +42,7 @@ export class QuizPlayComponent {
   }
 
   endQuiz():void{
-    console.log("coucou");
+    this.testOver = true;
   }
 
   currentQuestionIndex(i: number): boolean{
