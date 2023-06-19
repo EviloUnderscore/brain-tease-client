@@ -17,7 +17,7 @@
 
                 <div class="answers">
                     <ng-container *ngFor="let answer of question.answers">
-                        <a class="answer" [class.selected]="answer.selected">
+                        <a class="answer" [ngClass]="getClassForAnswer(answer)">
                             <p>{{answer.text}}</p>
                         </a>
                     </ng-container>
