@@ -1,4 +1,3 @@
-import { UsersService } from "src/services/users.service";
 import { Quiz } from "./Quiz";
 
 export class Quizzes {
