@@ -12,12 +12,12 @@
             <li *ngFor="let question of questions; let i = index">
                 <!-- <div *ngIf="currentQuestionIndex(i)" > -->
                 <div>
-                    <div class="question-item">
+                    <div class="question-title">
                         <h3>{{question.question}}</h3>
                     </div>
                     <div class="answers">
-                        <a class="answer">
-                            <p >{{question.answer}}A1</p>
+                        <a class="answer selected">
+                            <p >{{question.answer}}</p>
                         </a>
                         <a class="answer">
                             <p>{{question.fake_answer_1}}</p>

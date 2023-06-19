@@ -69,9 +69,9 @@
 
                             <div class="fake-answers form-group">
                                 <label for="">Mauvaises réponses</label>
-                                <textarea type="text" id="fake-answer-1" name="fake-answer-1" [(ngModel)]="question.fake_answer_1" required></textarea>
-                                <textarea type="text" id="fake-answer-2" name="fake-answer-2" [(ngModel)]="question.fake_answer_2" required></textarea>
-                                <textarea type="text" id="fake-answer-3" name="fake-answer-3" [(ngModel)]="question.fake_answer_3" required></textarea>
+                                <textarea type="text" id="fake-answer-1-{{i}}" name="fake-answer-1-{{i}}" [(ngModel)]="question.fake_answer_1" required></textarea>
+                                <textarea type="text" id="fake-answer-2-{{i}}" name="fake-answer-2-{{i}}" [(ngModel)]="question.fake_answer_2" required></textarea>
+                                <textarea type="text" id="fake-answer-3-{{i}}" name="fake-answer-3-{{i}}" [(ngModel)]="question.fake_answer_3" required></textarea>
                             </div>
                         </li>
                     </ul>
