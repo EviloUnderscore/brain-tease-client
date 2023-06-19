@@ -30,6 +30,10 @@ export class HistoriesService {
     return this.http.get<QuizHistories>(`/api/histories/user/${id}`)
   }
 
+  deleteByQuizId(id: string): Observable<any>{
+    return this.http.delete<any>(`/api/histories/quiz/${id}`);
+  }
+
   createHistory(quiz_id: string, score: number): Observable<QuizHistory>{
     return new Observable<QuizHistory>(observer => {
       this.auth.user.subscribe(user => {

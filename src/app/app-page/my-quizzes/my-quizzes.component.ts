@@ -4,6 +4,7 @@ import { Quiz } from 'src/classes/Quiz';
 import { QuizzesService } from 'src/services/quizzes.service';
 import { QuestionsService } from 'src/services/questions.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { HistoriesService } from 'src/services/histories.service';
 
 @Component({
   selector: 'my-quizzes',
@@ -20,6 +21,7 @@ export class MyQuizzesComponent {
   constructor(
     private quizzesService: QuizzesService,
     private questionsService: QuestionsService,
+    private historiesService: HistoriesService,
     private auth: AngularFireAuth){
     this.quizzes = new Quizzes();
     this.filteredQuizzes = new Quizzes();
@@ -45,12 +47,14 @@ export class MyQuizzesComponent {
   }
 
   public deleteQuiz(quiz: Quiz): void{
-    this.questionsService.deleteByQuizId(quiz.id).subscribe(() => {
-      this.quizzesService.deleteById(quiz.id).subscribe(() => {
-        this.quizzes.removeQuiz(quiz);
-        this.filteredQuizzes.removeQuiz(quiz);
+    this.historiesService.deleteByQuizId(quiz.id).subscribe(() => {
+      this.questionsService.deleteByQuizId(quiz.id).subscribe(() => {
+        this.quizzesService.deleteById(quiz.id).subscribe(() => {
+          this.quizzes.removeQuiz(quiz);
+          this.filteredQuizzes.removeQuiz(quiz);
+        });
       });
-    });
+    })
   }
 
   public createClicked(): void{

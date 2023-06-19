@@ -3,13 +3,15 @@
         <div class="title-section">
             <h2>{{quiz.name}}</h2> 
         </div>
-        <p class="questions">Nombre de questions : {{nbOfQuestions}}</p>
-        <p class="questions">{{quiz.category.name}}</p>
+        <div class="category-area">
+            <p class="category">{{quiz.category.name}}</p>
+        </div>
         <div class="btn-section">
             <button class="btn btn-primary" [routerLink]="['/play/' + quiz.id]">Participer</button>
         </div>
     </div>
     <div class="author">
         <p>Réalisé par <span class="bold">{{quiz.authorName}}</span></p>
+        <p class="questions">Nombre de questions : {{nbOfQuestions}}</p>
     </div>
 </div>
