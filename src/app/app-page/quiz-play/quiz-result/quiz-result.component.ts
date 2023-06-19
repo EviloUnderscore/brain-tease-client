@@ -10,9 +10,15 @@ import { RandomAnswer } from 'src/classes/RandomAnswer';
 export class QuizResultComponent {
   @Input() questions: QuestionsWithAnswers;
   details = false;
+  score: number
 
   constructor(){
     this.questions = new QuestionsWithAnswers();
+    this.score = 0;
+  }
+
+  ngOnInit(): void{
+    this.computeScore();
   }
 
   displayDetails(): void{
@@ -27,5 +33,11 @@ export class QuizResultComponent {
     } else {
       return '';
     }
+  }
+
+  private computeScore(): void{
+    let rightAnswers = this.questions.countRightAnswers();
+    let score = (rightAnswers / this.questions.count())*100;
+    this.score = Math.round(score);
   }
 }

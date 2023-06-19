@@ -2,7 +2,7 @@
     <div class="results">
         <h3>Résultats</h3>
         <div class="score">
-            <h3>50%</h3>
+            <h3>{{score}}%</h3>
         </div>
         <button *ngIf="!details" class="btn btn-primary" (click)="displayDetails()">Afficher le détail</button>
         <button *ngIf="details" class="btn btn-primary" (click)="displayDetails()">Cacher le détail</button>

@@ -17,6 +17,22 @@ export class QuestionsWithAnswers {
         }
     }
 
+    public count(): number{
+        return this.questionsWithAnswers.length;
+    }
+
+    public countRightAnswers(): number{
+        let ra = 0;
+        for(let q of this.questionsWithAnswers){
+            for(let a of q.answers){
+                if(a.correct && a.selected){
+                    ra++
+                }
+            }
+        }
+        return ra;
+    }
+
     [Symbol.iterator]() {
         let index = 0;
         const questionsWithAnswers = this.questionsWithAnswers;
