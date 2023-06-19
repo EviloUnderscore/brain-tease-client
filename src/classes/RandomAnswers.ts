@@ -31,5 +31,16 @@ export class RandomAnswers {
         const FA3 = new RandomAnswer();
         FA3.text = question.fake_answer_3;
         this.answers.push(FA3);
+
+        this.shuffleArray();
+    }
+
+    private shuffleArray(): void{
+        const arrayLength = this.answers.length;
+
+        for (let i = arrayLength - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [this.answers[i], this.answers[j]] = [this.answers[j], this.answers[i]];
+        }
     }
 }
