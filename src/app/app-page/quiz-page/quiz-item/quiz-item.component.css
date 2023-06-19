@@ -21,10 +21,26 @@
     padding-bottom: 3vh;
 }
 
-.questions{
+.footer-item{
     font-size: larger;
     margin: 0;
     text-align: right;
+    flex-basis: 33.3%;
+}
+
+.item-left{
+    text-align: left;
+}
+.item-center{
+    text-align: center;
+}
+.item-right{
+    text-align: right;
+}
+
+.score{
+    text-align: center;
+    font-weight: 600;
 }
 
 .author{
@@ -46,12 +62,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-basis: 33.3%;
 }
 
 .category{
     margin: 0;
     font-size: large;
     font-weight: 500;
+    text-align: center;
 }
 
 .title-section{
