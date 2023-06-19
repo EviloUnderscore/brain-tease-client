@@ -14,6 +14,7 @@ export class QuizPlayComponent {
   quiz: Quiz;
   questions: Questions;
   isPlaying = false;
+  lastQuestion = false;
   currentQuestion = 0;
 
   constructor(
@@ -31,6 +32,16 @@ export class QuizPlayComponent {
   startingQuiz(): void{
     this.isPlaying = true;
     this.currentQuestion++;
+    this.checkQuestionList();
+  }
+
+  nextQuestion(): void{
+    this.currentQuestion++;
+    this.checkQuestionList();
+  }
+
+  endQuiz():void{
+    console.log("coucou");
   }
 
   currentQuestionIndex(i: number): boolean{
@@ -45,5 +56,11 @@ export class QuizPlayComponent {
         this.questions.addAll(questions);
       })
     })
+  }
+
+  private checkQuestionList(): void{
+    if(this.currentQuestion >= this.questions.count()){
+      this.lastQuestion = true;
+    }
   }
 }

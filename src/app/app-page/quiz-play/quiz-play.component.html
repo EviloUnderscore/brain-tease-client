@@ -10,8 +10,7 @@
         </div>
         <ul class="question-list">
             <li *ngFor="let question of questions; let i = index">
-                <!-- <div *ngIf="currentQuestionIndex(i)" > -->
-                <div>
+                <div *ngIf="currentQuestionIndex(i)" >
                     <div class="question-title">
                         <h3>{{question.question}}</h3>
                     </div>
@@ -28,6 +27,10 @@
                         <a class="answer">
                             <p>{{question.fake_answer_3}}</p>
                         </a>
+                    </div>
+                    <div class="next-btn">
+                        <button *ngIf="!lastQuestion" class="btn btn-primary" (click)="nextQuestion()">Question quivante</button>
+                        <button *ngIf="lastQuestion" class="btn btn-primary" (click)="endQuiz()">Terminer le Quiz</button>
                     </div>
                 </div>
             </li>
