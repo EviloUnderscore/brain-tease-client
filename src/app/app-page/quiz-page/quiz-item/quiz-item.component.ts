@@ -49,10 +49,23 @@ export class QuizItemComponent{
   displayScore(): string{
     const quizHistories = this.histories.getHistoriesByQuizId(this.quiz.id);
     if(!quizHistories.isEmpty()){
-      return '90%'
+      const higherScore = this.getHigherScore(quizHistories);
+      return higherScore + "%"
     } else {
       return "Aucun score répertorié"
     }
+  }
+
+  private getHigherScore(quizHistories: QuizHistories): number{
+    let highestScore = 0;
+
+    for (const history of quizHistories) {
+        if (history.score > highestScore) {
+            highestScore = history.score;
+        }
+    }
+
+    return highestScore;
   }
 
   private getCategory(): void{
