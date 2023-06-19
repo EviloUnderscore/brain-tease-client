@@ -9,8 +9,8 @@
             <button class="btn btn-primary" (click)="startingQuiz()">Commencer le quiz !</button>
         </div>
         <ul *ngIf="!testOver" class="question-list">
-            <li *ngFor="let question of questions; let i = index" class="quiz-li">
-                <div *ngIf="currentQuestionIndex(i)" >
+            <ng-container *ngFor="let question of questions; let i = index">
+                <li *ngIf="currentQuestionIndex(i)">
                     <div class="question-title">
                         <h3>{{question.question}}</h3>
                     </div>
@@ -32,8 +32,8 @@
                         <button *ngIf="!lastQuestion" class="btn btn-primary" (click)="nextQuestion()">Question quivante</button>
                         <button *ngIf="lastQuestion" class="btn btn-primary" (click)="endQuiz()">Terminer le Quiz</button>
                     </div>
-                </div>
-            </li>
+                </li>
+            </ng-container>
         </ul>
         <div *ngIf="testOver">
             <h3>Résultats</h3>
