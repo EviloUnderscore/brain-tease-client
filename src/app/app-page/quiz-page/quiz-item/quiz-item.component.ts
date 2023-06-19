@@ -1,4 +1,5 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Category } from 'src/classes/Category';
 import { QuestionsCount } from 'src/classes/QuestionsCount';
 import { Quiz } from 'src/classes/Quiz';
 import { CategoriesService } from 'src/services/category.service';

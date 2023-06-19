@@ -20,6 +20,10 @@ export class Categories {
       this.categories.push(cat);
     }
 
+    public getById(id: string): Category {
+        return (this.categories.find(category => category.id === id) as Category);
+    }
+
     public sortByName(){
         this.categories.sort((a, b) => {
             const nameA = a.name.toLowerCase();

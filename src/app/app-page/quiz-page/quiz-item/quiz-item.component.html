@@ -4,6 +4,7 @@
             <h2>{{quiz.name}}</h2> 
         </div>
         <p class="questions">Nombre de questions : {{nbOfQuestions}}</p>
+        <p class="questions">{{quiz.category.name}}</p>
         <div class="btn-section">
             <button class="btn btn-primary" [routerLink]="['/play/' + quiz.id]">Participer</button>
         </div>
