@@ -1,3 +1,6 @@
 <div class="root">
     <h3>Résultats</h3>
+    <ng-container *ngFor="let q of questions">
+        <p>{{q.question}}</p>
+    </ng-container>
 </div>
