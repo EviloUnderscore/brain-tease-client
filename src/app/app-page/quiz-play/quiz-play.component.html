@@ -24,14 +24,14 @@
                     </div>
 
                     <div class="next-btn">
-                        <button *ngIf="!lastQuestion" class="btn btn-primary" (click)="nextQuestion()">Question quivante</button>
-                        <button *ngIf="lastQuestion" class="btn btn-primary" (click)="endQuiz()">Terminer le Quiz</button>
+                        <button *ngIf="!lastQuestion" class="btn btn-primary" (click)="nextQuestion()" [disabled]="!isAnswerSelected(question)">Question quivante</button>
+                        <button *ngIf="lastQuestion" class="btn btn-primary" (click)="endQuiz()" [disabled]="!isAnswerSelected(question)">Terminer le Quiz</button>
                     </div>
                 </li>
             </ng-container>
         </ul>
         <div *ngIf="testOver">
-            <h3>Résultats</h3>
+            <quiz-result></quiz-result>
         </div>
     </section>
 </div>

@@ -56,8 +56,18 @@ export class QuizPlayComponent {
   }
 
   selectAnswer(answer: RandomAnswer, question: RandomAnswers): void{
-    question.unselectAll();
-    answer.selected = true
+    if(answer.selected){
+      answer.selected = false;
+    } else {
+      question.unselectAll();
+      answer.selected = true;
+    }
+  }
+
+  isAnswerSelected(question: RandomAnswers): boolean {
+    console.log(question);
+    
+    return question.answers.some((answer) => answer.selected);
   }
 
   private getQuiz(): void{
