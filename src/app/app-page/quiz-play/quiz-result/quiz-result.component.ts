@@ -38,6 +38,6 @@ export class QuizResultComponent {
   private computeScore(): void{
     let rightAnswers = this.questions.countRightAnswers();
     let score = (rightAnswers / this.questions.count())*100;
-    this.score = Math.round(score);
+    this.score = parseFloat(score.toFixed(2));
   }
 }
