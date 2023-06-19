@@ -35,16 +35,6 @@ export class RandomAnswers {
         this.shuffleArray();
     }
 
-    public countRightAnswers(): number{
-        let ra = 0;
-        for(let a of this.answers){
-            if(a.correct && a.selected){
-                ra++
-            }
-        }
-        return ra;
-    }
-
     private shuffleArray(): void{
         const arrayLength = this.answers.length;
 

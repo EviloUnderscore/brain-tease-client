@@ -32,7 +32,7 @@
             </ng-container>
         </ul>
         <div *ngIf="testOver">
-            <quiz-result [questions]="questionsWithRandomAnswers"></quiz-result>
+            <quiz-result [questions]="questionsWithRandomAnswers" [quiz_id]="quiz.id"></quiz-result>
         </div>
     </section>
 </div>

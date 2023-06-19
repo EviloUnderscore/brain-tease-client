@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { QuestionsWithAnswers } from 'src/classes/QuestionsWithAnswers';
 import { RandomAnswer } from 'src/classes/RandomAnswer';
+import { HistoriesService } from 'src/services/histories.service';
 
 @Component({
   selector: 'quiz-result',
@@ -9,16 +10,19 @@ import { RandomAnswer } from 'src/classes/RandomAnswer';
 })
 export class QuizResultComponent {
   @Input() questions: QuestionsWithAnswers;
+  @Input() quiz_id: string;
   details = false;
-  score: number
+  score: number;
 
-  constructor(){
+  constructor(private historiesService: HistoriesService){
     this.questions = new QuestionsWithAnswers();
     this.score = 0;
+    this.quiz_id = '';
   }
 
   ngOnInit(): void{
     this.computeScore();
+    this.addHistory();
   }
 
   displayDetails(): void{
@@ -33,6 +37,10 @@ export class QuizResultComponent {
     } else {
       return '';
     }
+  }
+
+  private addHistory(): void{
+    this.historiesService.createHistory(this.quiz_id, this.score).subscribe();
   }
 
   private computeScore(): void{
