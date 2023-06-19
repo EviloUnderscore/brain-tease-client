@@ -1,6 +1,6 @@
 {
     "/api/*": {
-        "target": "http://0.0.0.0:8080",
+        "target": "https://brain-tease-0.ew.r.appspot.com",
         "secure": false,
         "logLevel": "debug",
         "changeOrigin": true
