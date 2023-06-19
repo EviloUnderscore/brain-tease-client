@@ -1,5 +1,5 @@
 <div class="root">
-    <header class="quiz-head">
+    <header *ngIf="!testOver" class="quiz-head">
         <h2 class="title">{{quiz.name}}</h2>
         <h2 class="questions">{{currentQuestion}}/{{questions.count()}}</h2>
         <h2 class="informations"></h2>

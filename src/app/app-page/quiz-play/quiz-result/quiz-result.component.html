@@ -1,6 +1,28 @@
 <div class="root">
-    <h3>Résultats</h3>
-    <ng-container *ngFor="let q of questions">
-        <p>{{q.question}}</p>
-    </ng-container>
+    <div class="results">
+        <h3>Résultats</h3>
+        <div class="score">
+            <h3>50%</h3>
+        </div>
+        <button *ngIf="!details" class="btn btn-primary" (click)="displayDetails()">Afficher le détail</button>
+        <button *ngIf="details" class="btn btn-primary" (click)="displayDetails()">Cacher le détail</button>
+    </div>
+    
+    <ul *ngIf="details" class="question-list">
+        <ng-container *ngFor="let question of questions; let i = index">
+            <li>
+                <div class="question-title">
+                    <h3>{{question.question}}</h3>
+                </div>
+
+                <div class="answers">
+                    <ng-container *ngFor="let answer of question.answers">
+                        <a class="answer" [class.selected]="answer.selected">
+                            <p>{{answer.text}}</p>
+                        </a>
+                    </ng-container>
+                </div>
+            </li>
+        </ng-container>
+    </ul>
 </div>

@@ -8,13 +8,13 @@ import { QuestionsWithAnswers } from 'src/classes/QuestionsWithAnswers';
 })
 export class QuizResultComponent {
   @Input() questions: QuestionsWithAnswers;
+  details = false;
 
   constructor(){
     this.questions = new QuestionsWithAnswers();
   }
 
-  ngOnInit(): void{
-    console.log(this.questions);
-    
+  displayDetails(): void{
+    this.details = !this.details
   }
 }
