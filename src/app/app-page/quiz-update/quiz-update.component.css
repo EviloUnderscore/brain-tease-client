@@ -6,7 +6,7 @@
 
 .btn-section{
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     flex-basis: 33.3%;
 }
 
