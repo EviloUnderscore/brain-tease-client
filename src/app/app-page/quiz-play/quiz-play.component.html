@@ -10,8 +10,25 @@
         </div>
         <ul class="question-list">
             <li *ngFor="let question of questions; let i = index">
-                <div *ngIf="currentQuestionIndex(i)" class="question-item">
-                    <h3>{{question.question}} ddd</h3>
+                <!-- <div *ngIf="currentQuestionIndex(i)" > -->
+                <div>
+                    <div class="question-item">
+                        <h3>{{question.question}}</h3>
+                    </div>
+                    <div class="answers">
+                        <a class="answer">
+                            <p >{{question.answer}}A1</p>
+                        </a>
+                        <a class="answer">
+                            <p>{{question.fake_answer_1}}</p>
+                        </a>
+                        <a class="answer">
+                            <p>{{question.fake_answer_2}}</p>
+                        </a>
+                        <a class="answer">
+                            <p>{{question.fake_answer_3}}</p>
+                        </a>
+                    </div>
                 </div>
             </li>
         </ul>
