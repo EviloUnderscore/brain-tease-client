@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Observable, map } from 'rxjs';
 
 @Component({
@@ -18,7 +18,7 @@ export class NavBarComponent {
     public auth: AngularFireAuth,
     private breakpointObserver: BreakpointObserver){
       this.isLargeScreen$ = this.breakpointObserver
-        .observe([Breakpoints.Medium, Breakpoints.Large])
+        .observe('(min-width: 960px)')
         .pipe(map((result: { matches: any; }) => result.matches)
       );
   }
