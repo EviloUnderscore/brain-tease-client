@@ -98,6 +98,12 @@ input, textarea, select{
     text-align: end;
 }
 
+.error-message-questions{
+    color: red;
+    font-weight: 600;
+    margin: 1rem 0;
+}
+
 .category-error{
     display: flex;
     flex-direction: column;

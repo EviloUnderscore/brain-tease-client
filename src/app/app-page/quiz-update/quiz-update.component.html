@@ -22,7 +22,6 @@
                             <label for="description">Description</label>
                             <textarea id="description" name="description" [(ngModel)]="quiz.description" required></textarea>
                             </div>
-                        <div *ngIf="quizForm.controls['description']?.invalid && quizForm.submitted" class="error-message">Description requise.</div>
                         <div class="form-group">
                             <label for="category_id">Catégorie</label>
                             <select id="category_id" name="category_id" [(ngModel)]="quiz.category_id" required>
@@ -44,6 +43,7 @@
                 <div class="no-questions" *ngIf="!hasQuestion">
                     <p>Il n'y a aucune question pour ce quiz.</p>
                     <p>Créez-en une !</p>
+                    <div *ngIf="!hasQuestion && quizForm.submitted" class="error-message-questions">Au moins une question est requise</div>
                 </div>
 
                 <div class="with-questions" *ngIf="hasQuestion">
