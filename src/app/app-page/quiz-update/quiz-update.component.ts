@@ -103,7 +103,7 @@ export class QuizUpdateComponent {
   }
 
   isFormValid(): boolean {
-    if (!this.quiz.name || !this.quiz.category_id || !this.hasQuestion) {
+    if (!this.quiz.name || !this.quiz.category_id || !this.hasQuestion || !this.questions.areAllComplete()) {
       return false;
     }
     return true;

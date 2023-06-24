@@ -104,6 +104,13 @@ input, textarea, select{
     margin: 1rem 0;
 }
 
+.error-message-question{
+    color: red;
+    font-weight: 600;
+    margin: 1rem 0;
+    text-align: center;
+}
+
 .category-error{
     display: flex;
     flex-direction: column;

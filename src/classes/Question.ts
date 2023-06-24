@@ -21,6 +21,24 @@ export class Question {
         this.fake_answer_3 = '';
     }
 
+    public isComplete(): boolean {
+        if (
+          this.question !== null &&
+          this.question !== '' &&
+          this.answer !== null &&
+          this.answer !== '' &&
+          this.fake_answer_1 !== null &&
+          this.fake_answer_1 !== '' &&
+          this.fake_answer_2 !== null &&
+          this.fake_answer_2 !== '' &&
+          this.fake_answer_3 !== null &&
+          this.fake_answer_3 !== ''
+        ) {
+          return true;
+        }
+        return false;
+      }
+
     public serialize(question: any){        
         this.id = question.id;
         this.question = question.question;
@@ -33,7 +51,7 @@ export class Question {
         this.fake_answer_3 = question.fake_answer_3;
     }
 
-    deserialize(): {} {
+    public deserialize(): {} {
         return {
             id: this.id,
             question: this.question,

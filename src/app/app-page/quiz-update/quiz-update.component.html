@@ -73,6 +73,7 @@
                                 <textarea type="text" id="fake-answer-2-{{i}}" name="fake-answer-2-{{i}}" [(ngModel)]="question.fake_answer_2" required></textarea>
                                 <textarea type="text" id="fake-answer-3-{{i}}" name="fake-answer-3-{{i}}" [(ngModel)]="question.fake_answer_3" required></textarea>
                             </div>
+                            <div *ngIf="!question.isComplete() && quizForm.submitted" class="error-message-question">Tous les champs n'ont pas été complétés</div>
                         </li>
                     </ul>
                 </div>

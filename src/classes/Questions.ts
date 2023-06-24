@@ -35,6 +35,15 @@ export class Questions {
         return this.questions.length;
     }
 
+    public areAllComplete(): boolean{
+        for (let question of this.questions) {
+            if (!question.isComplete()) {
+              return false;
+            }
+          }
+          return true;
+    }
+
     [Symbol.iterator]() {
         let index = 0;
         const categories = this.questions;
