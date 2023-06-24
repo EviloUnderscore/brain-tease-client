@@ -1,6 +1,6 @@
 .page{
     background-color: rgb(232, 232, 232);
-    margin-top:  10vh;
-    min-height: 90vh;
+    margin-top:  90px;
+    min-height: calc(100vh - 90px);
     color: rgb(31 41 55);
 }
