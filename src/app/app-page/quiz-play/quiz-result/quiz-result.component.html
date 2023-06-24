@@ -4,6 +4,7 @@
         <div class="score">
             <h3>{{score}}%</h3>
         </div>
+        <button class="btn btn-secondary" [routerLink]="'/home'">Retourner à l'accueil</button>
         <button *ngIf="!details" class="btn btn-primary" (click)="displayDetails()">Afficher le détail</button>
         <button *ngIf="details" class="btn btn-primary" (click)="displayDetails()">Cacher le détail</button>
     </div>

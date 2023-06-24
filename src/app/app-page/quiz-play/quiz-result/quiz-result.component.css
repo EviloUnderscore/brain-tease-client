@@ -21,6 +21,20 @@
     background-color: rgb(43, 57, 77);
 }
 
+.btn-secondary{
+    height: 10vh;
+    width: 25vw;
+    font-size: large;
+    font-weight: 600;
+    background-color: white;
+    color: rgb(31, 41, 55);
+    border: 2px solid rgb(31, 41, 55);
+}
+
+.btn-secondary:hover{
+    background-color: rgba(31, 41, 55, 0.05);
+}
+
 .answers{
     display: flex;
     flex-wrap: wrap;
