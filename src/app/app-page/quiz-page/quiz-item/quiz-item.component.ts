@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Category } from 'src/classes/Category';
 import { QuestionsCount } from 'src/classes/QuestionsCount';
 import { Quiz } from 'src/classes/Quiz';
 import { QuizHistories } from 'src/classes/QuizHistories';

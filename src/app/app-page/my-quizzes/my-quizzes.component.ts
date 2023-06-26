@@ -5,6 +5,8 @@ import { QuizzesService } from 'src/services/quizzes.service';
 import { QuestionsService } from 'src/services/questions.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { HistoriesService } from 'src/services/histories.service';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'my-quizzes',
@@ -17,15 +19,21 @@ export class MyQuizzesComponent {
   titleSearch: string;
   userName:  string | null = null;
   userId:  string | null = null;
+  public isLargeScreen$: Observable<boolean>;
 
   constructor(
     private quizzesService: QuizzesService,
     private questionsService: QuestionsService,
     private historiesService: HistoriesService,
-    private auth: AngularFireAuth){
-    this.quizzes = new Quizzes();
-    this.filteredQuizzes = new Quizzes();
-    this.titleSearch = '';
+    private auth: AngularFireAuth,
+    private breakpointObserver: BreakpointObserver){
+      this.isLargeScreen$ = this.breakpointObserver
+        .observe('(min-width: 850px)')
+        .pipe(map((result: { matches: any; }) => result.matches)
+      );
+      this.quizzes = new Quizzes();
+      this.filteredQuizzes = new Quizzes();
+      this.titleSearch = '';
   }
 
   ngOnInit(): void{

@@ -1,5 +1,5 @@
 <div class="root">
-    <header class="quiz-head">
+    <header *ngIf="(isLargeScreen$ | async)"  class="quiz-head">
         <h2 class="title">Vos quiz</h2>
         <div class="btn-section">
             <button class="btn btn-primary" [routerLink]="['/my-quizzes/create']">Créer un quiz</button>
@@ -8,10 +8,26 @@
             <input type="text" placeholder="Rechercher par titre" [(ngModel)]="titleSearch" (ngModelChange)="updateSearch()">
         </div>
     </header>
+
+    <header *ngIf="!(isLargeScreen$ | async)" class="quiz-head-mobile">
+        <h2>Mes quiz</h2>
+        <div class="btn-section-mobile">
+            <button class="btn btn-primary-mobile" [routerLink]="['/my-quizzes/create']">Créer un quiz</button>
+        </div>
+        <div class="search-bar-mobile">
+            <input type="text" placeholder="Rechercher par titre" [(ngModel)]="titleSearch" (ngModelChange)="updateSearch()">
+        </div>
+    </header>
     
-    <ul class="quiz-main">
+    <ul *ngIf="(isLargeScreen$ | async)" class="quiz-main">
         <li *ngFor="let quiz of filteredQuizzes">
             <my-quiz-item [quiz]="quiz" (deletePressed)="deleteQuiz($event)"></my-quiz-item>
+        </li>
+    </ul>
+
+    <ul *ngIf="!(isLargeScreen$ | async)" class="quiz-main">
+        <li *ngFor="let quiz of filteredQuizzes">
+            <my-quiz-item-mobile [quiz]="quiz" (deletePressed)="deleteQuiz($event)"></my-quiz-item-mobile>
         </li>
     </ul>
 </div>
