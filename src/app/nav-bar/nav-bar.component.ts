@@ -18,7 +18,7 @@ export class NavBarComponent {
     public auth: AngularFireAuth,
     private breakpointObserver: BreakpointObserver){
       this.isLargeScreen$ = this.breakpointObserver
-        .observe('(min-width: 960px)')
+        .observe('(min-width: 850px)')
         .pipe(map((result: { matches: any; }) => result.matches)
       );
   }

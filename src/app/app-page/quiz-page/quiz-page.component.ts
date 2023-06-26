@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Categories } from 'src/classes/Categories';
 import { QuestionsCount } from 'src/classes/QuestionsCount';
 import { QuizHistories } from 'src/classes/QuizHistories';
 import { Quizzes } from 'src/classes/Quizzes';
-import { CategoriesService } from 'src/services/category.service';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { HistoriesService } from 'src/services/histories.service';
 import { QuestionsService } from 'src/services/questions.service';
 import { QuizzesService } from 'src/services/quizzes.service';
+import { Observable, map } from 'rxjs';
 
 
 @Component({
@@ -22,13 +22,18 @@ export class QuizPageComponent implements OnInit{
   histories: QuizHistories;
   userSearch = '';
   titleSearch = '';
+  public isLargeScreen$: Observable<boolean>;
 
   constructor(
     private quizzesService: QuizzesService,
     private questionsService: QuestionsService,
     private historiesService: HistoriesService,
-    private auth: AngularFireAuth)
-  {
+    private auth: AngularFireAuth,
+    private breakpointObserver: BreakpointObserver){
+      this.isLargeScreen$ = this.breakpointObserver
+        .observe('(min-width: 850px)')
+        .pipe(map((result: { matches: any; }) => result.matches)
+      );
     this.quizzes = new Quizzes();
     this.filterdQuizzes = new Quizzes();
     this.questionsCount = new QuestionsCount();

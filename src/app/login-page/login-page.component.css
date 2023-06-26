@@ -1,14 +1,15 @@
 .root *{
     color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .login-area{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     gap: 4vh;
-    align-items: center;
-    justify-content: center;
     height: 90vh;
 }
 
@@ -17,7 +18,7 @@
     display: flex;
     text-align: center;
     flex-direction: column;
-    width: 25rem;
+    margin: 0 10vw;
     height: 70vh;
     border-width: 1px;
     border-color: rgb(17 24 39);
@@ -32,6 +33,7 @@
     gap: 1rem;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
 
 .connection{

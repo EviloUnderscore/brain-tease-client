@@ -1,0 +1,17 @@
+<div class="root">
+    <div class="main">
+        <h2 class="title">{{quiz.name}}</h2> 
+        <p class="category">{{quiz.category.name}}</p>
+    </div>
+    <div class="author">
+        <p class="footer-item item-left">Réalisé par <span class="bold">{{quiz.authorName}}</span></p>
+        <div class="score-area">
+            <p>Meilleur score :</p>
+            <div class="score">{{displayScore()}}</div>
+        </div>
+    </div>
+
+    <div class="btn-section">
+        <button class="btn btn-primary" [routerLink]="['/play/' + quiz.id]">Participer</button>
+    </div>
+</div>

@@ -17,14 +17,14 @@
 
 .btn-area{
     position: absolute;
-    right: 4rem;
+    right: 5vw;
 }
 
 .user-area{
     display: flex;
     gap: 1rem;
     position: absolute;
-    left: 4rem;
+    left: 5vw;
     font-weight: 300;
 }
 
