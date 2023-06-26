@@ -3,10 +3,10 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { QuestionsCount } from 'src/classes/QuestionsCount';
 import { QuizHistories } from 'src/classes/QuizHistories';
 import { Quizzes } from 'src/classes/Quizzes';
-import { BreakpointObserver } from '@angular/cdk/layout';
 import { HistoriesService } from 'src/services/histories.service';
 import { QuestionsService } from 'src/services/questions.service';
 import { QuizzesService } from 'src/services/quizzes.service';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Observable, map } from 'rxjs';
 
 

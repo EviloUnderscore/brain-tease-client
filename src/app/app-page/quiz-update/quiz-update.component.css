@@ -1,22 +1,28 @@
-.quiz-head{
+.root{
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 1rem;
     margin-bottom: 1rem;
 }
 
-.btn-section{
+.form-header{
     display: flex;
-    justify-content: flex-end;
-    flex-basis: 33.3%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4vh;
 }
 
-.title{
-    flex-basis: 66.6%;
+.form-header-mobile{
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4vh;
 }
 
-.form-head{
-    display: flex;
-    gap: 2vw;
+.btn-mobile{
+    padding: 2vh 4vw;
 }
 
 .form-main{
@@ -25,19 +31,29 @@
     gap: 2vw;
 }
 
+.form-main-mobile{
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
+
+.btn-section{
+    display: flex;
+    justify-content: flex-end;
+}
+
 .form-group{
     font-weight: 500;
     display: flex;
     gap: 1vw;
-    flex-basis: 50%;
 }
 
 .form-group label{
-    flex-basis: 30%;
+    flex-basis: 35%;
 }
 
 .form-group input, .form-group textarea, .form-group select{
-    flex-basis: 70%;
+    flex-basis: 65%;
     border-radius: 5px;
     border: none;
     box-shadow: 1px 1px 2px rgba(31, 41, 55, 0.25);
@@ -52,30 +68,48 @@ input, textarea, select{
     color: rgb(31, 41, 55);
 }
 
-
-.form-group select{
+.form-group select, .form-group input{
     height: 5vh;
+}
+
+.form-group-mobile{
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.form-group-mobile input, .form-group-mobile textarea, .form-group-mobile select{
     border-radius: 5px;
     border: none;
-    box-shadow: 1px 1px 2px rgba(31, 41, 55, 0.25);
-    padding: 0 1vw;
+    box-shadow: 1px 1px 4px rgba(31, 41, 55, 0.20);
+    padding-left: 2vw;
+}
+
+.form-group-mobile textarea{
+    height: 12vh;
+}
+
+.form-group-mobile select, .form-group-mobile input{
+    height: 5vh;
 }
 
 .form-title{
-    padding-bottom: 2vh;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 4vh;
 }
 
-.inputs-area {
-    flex-basis: 70%;
+.label-delete{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 
 .submit-btn{
     background-color: rgba(31, 41, 55);
     border: none;
-    width: 20vw;
-    height: 7vh;
+    padding: 3vh 15vw;
     font-weight: 600;
 }
 
@@ -85,7 +119,7 @@ input, textarea, select{
     align-items: center;
 }
 
-.informations, .questions, .quiz-head{
+.informations, .questions{
     margin-bottom: 2vh;
     padding-bottom: 4vh;
     border-bottom: 1px solid rgba(31, 41, 55);
@@ -118,6 +152,7 @@ input, textarea, select{
 
 .no-questions{
     text-align: center;
+    margin: 2vh 0;
 }
 
 .add-question{
@@ -144,7 +179,7 @@ input, textarea, select{
 .question-list{
     display: flex;
     flex-direction: column;
-    gap: 2vh;
+    gap: 4vh;
     padding: 0;
 }
 
@@ -153,12 +188,32 @@ input, textarea, select{
     background-color: white;
     box-shadow: 1px 1px 2px rgba(31, 41, 55, 0.25);
     border-radius: 5px;
-    padding: 1rem;
+    padding: 3vw;
+    position: relative;
+}
+
+.btn-area{
+    position: absolute;
+    right: -2.5vw;
+    top: -2.5vh;
+}
+
+.btn-area-mobile{
+    position: absolute;
+    right: -6vw;
+    top: -3vh;
 }
 
 .questions-form-area{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 2vh;
+}
+
+.questions-form-area-mobile{
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
     margin-bottom: 2vh;
 }
@@ -178,6 +233,7 @@ input, textarea, select{
     cursor: pointer;
 }
 
+
 .delete-btn:hover{
     box-shadow: inset 1px 1px 2px rgba(31, 41, 55, 0.1);
     background-color: #c93140;
@@ -185,13 +241,6 @@ input, textarea, select{
 
 .basis-1{
     flex-basis: 45%;
-}
-
-.basis-2{
-    flex-basis: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .fake-answers{

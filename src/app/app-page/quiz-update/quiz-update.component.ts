@@ -7,6 +7,8 @@ import { Quiz } from 'src/classes/Quiz';
 import { CategoriesService } from 'src/services/category.service';
 import { QuestionsService } from 'src/services/questions.service';
 import { QuizzesService } from 'src/services/quizzes.service';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'quiz-update',
@@ -18,13 +20,19 @@ export class QuizUpdateComponent {
   categories: Categories;
   questions: Questions;
   hasQuestion: boolean = false;
+  public isLargeScreen$: Observable<boolean>;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private categoriesService: CategoriesService,
     private quizzesService: QuizzesService,
-    private questionsService: QuestionsService){
+    private questionsService: QuestionsService,
+    private breakpointObserver: BreakpointObserver){
+      this.isLargeScreen$ = this.breakpointObserver
+        .observe('(min-width: 850px)')
+        .pipe(map((result: { matches: any; }) => result.matches)
+      );
       this.quiz = new Quiz();
       this.categories = new Categories();
       this.questions = new Questions();

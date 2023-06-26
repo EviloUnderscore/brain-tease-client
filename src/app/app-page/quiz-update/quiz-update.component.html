@@ -1,40 +1,70 @@
 <div class="root">
-    <header class="quiz-head">
-        <h2 *ngIf="isCreation()" class="title">Création d'un nouveau Quiz</h2>
-        <h2 *ngIf="!isCreation()" class="title">Modification du Quiz</h2>
-        <div class="btn-section">
-            <button *ngIf="isCreation()" class="btn btn-danger" [routerLink]="['/home']">Annuler la création</button>
-            <button *ngIf="!isCreation()" class="btn btn-danger" [routerLink]="['/home']">Annuler les modifications</button>
-        </div>
-    </header>
     <div class="quiz-form">
         <form (submit)="submitForm()" #quizForm="ngForm">
+
             <div class="informations">
-                <h3 class="form-title">Informations du Quiz</h3>
-                <div class="form-head">
-                    <div class="form-main inputs-area">
-                        <div class="form-group">
+
+                <div *ngIf="(isLargeScreen$ | async)" class="form-header">
+                    <h3 class="form-title">Informations du Quiz</h3>
+                    <div class="btn-section">
+                        <button *ngIf="isCreation()" class="btn btn-danger" [routerLink]="['/home']">Annuler la création</button>
+                        <button *ngIf="!isCreation()" class="btn btn-danger" [routerLink]="['/home']">Annuler les modifications</button>
+                    </div>
+                </div>
+
+                <div *ngIf="!(isLargeScreen$ | async)" class="form-header-mobile">
+                    <h3 class="form-title">Informations du Quiz</h3>
+                    <div class="btn-section">
+                        <button *ngIf="isCreation()" class="btn btn-danger btn-mobile" [routerLink]="['/home']">Annuler la création</button>
+                        <button *ngIf="!isCreation()" class="btn btn-danger btn-mobile" [routerLink]="['/home']">Annuler les modifications</button>
+                    </div>
+                </div>
+
+                <div *ngIf="(isLargeScreen$ | async)" class="form-main inputs-area">
+                    <div class="form-group">
                             <label for="name">Titre du Quiz</label>
                             <input type="text" id="name" name="name" [(ngModel)]="quiz.name" required>
-                        </div>
-                        <div *ngIf="quizForm.controls['name']?.invalid && quizForm.submitted" class="error-message">Titre du Quiz requis.</div>
-                        <div class="form-group">
+                    </div>
+                    <div *ngIf="quizForm.controls['name']?.invalid && quizForm.submitted" class="error-message">Titre du Quiz requis.</div>
+                    <div class="form-group">
                             <label for="description">Description</label>
                             <textarea id="description" name="description" [(ngModel)]="quiz.description" required></textarea>
-                            </div>
-                        <div class="form-group">
+                    </div>
+                    <div class="form-group">
                             <label for="category_id">Catégorie</label>
                             <select id="category_id" name="category_id" [(ngModel)]="quiz.category_id" required>
                                 <option value="">Sélectionner une catégorie</option>
                                 <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
                             </select>
-                        </div>
-                        <div *ngIf="quizForm.controls['category_id']?.invalid && quizForm.submitted" class="error-message">Catégorie requise.</div>
                     </div>
-                </div>   
+                    <div *ngIf="quizForm.controls['category_id']?.invalid && quizForm.submitted" class="error-message">Catégorie requise.</div>
+                </div>
+
+                <div *ngIf="!(isLargeScreen$ | async)" class="form-main-mobile">
+                    <div class="form-group-mobile">
+                            <label for="name">Titre du Quiz</label>
+                            <input type="text" id="name" name="name" [(ngModel)]="quiz.name" required>
+                    </div>
+                    <div *ngIf="quizForm.controls['name']?.invalid && quizForm.submitted" class="error-message">Titre du Quiz requis.</div>
+                    
+                    <div class="form-group-mobile">
+                            <label for="description">Description</label>
+                            <textarea id="description" name="description" [(ngModel)]="quiz.description" required></textarea>
+                    </div>
+                    
+                    <div class="form-group-mobile">
+                            <label for="category_id">Catégorie</label>
+                            <select id="category_id" name="category_id" [(ngModel)]="quiz.category_id" required>
+                                <option value="">Sélectionner une catégorie</option>
+                                <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+                            </select>
+                    </div>
+                    <div *ngIf="quizForm.controls['category_id']?.invalid && quizForm.submitted" class="error-message">Catégorie requise.</div>
+                </div>
+
             </div>
              
-            <div class="questions">
+            <div *ngIf="(isLargeScreen$ | async)" class="questions">
                 <section class="form-title">
                     <h3 >Questions</h3>
                     <h4>Nombre de questions : {{questions.questions.length}}</h4>
@@ -55,10 +85,10 @@
                                     <textarea type="text" id="{{i}}" name="{{i}}" [(ngModel)]="question.question" required></textarea>
                                 </div>
                                 <div class="form-group basis-1">
-                                    <label for="answer-{{i}}">Réponse</label>
+                                    <label for="answer-{{i}}">Bonne réponse</label>
                                     <textarea type="text" id="answer-{{i}}" name="answer-{{i}}" [(ngModel)]="question.answer" required></textarea>
                                 </div>
-                                <div class="btn-area basis-2">
+                                <div class="btn-area">
                                     <a class="delete-btn" (click)="deleteQuestion(question)">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="svg">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
@@ -85,6 +115,67 @@
                     </a>
                 </div>
             </div>
+
+            <div *ngIf="!(isLargeScreen$ | async)" class="questions">
+
+                <section class="form-title">
+                    <h3>Questions</h3>
+                    <h4>{{questions.questions.length}}</h4>
+                </section>
+
+                <div class="no-questions" *ngIf="!hasQuestion">
+                    <p>Il n'y a aucune question pour ce quiz.</p>
+                    <p>Créez-en une !</p>
+                    <div *ngIf="!hasQuestion && quizForm.submitted" class="error-message-questions">Au moins une question est requise</div>
+                </div>
+
+                <div class="with-questions" *ngIf="hasQuestion">
+                    <ul class="question-list">
+
+                        <li class="question-item" *ngFor="let question of questions, let i = index">
+
+                            <div class="btn-area-mobile">
+                                <a class="delete-btn" (click)="deleteQuestion(question)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                                    </svg>  
+                                </a>
+                            </div>
+
+                            <div class="form-main questions-form-area-mobile">
+                                <div class="form-group-mobile">
+                                    <label for="{{i}}">Question</label>
+                                    <textarea type="text" id="{{i}}" name="{{i}}" [(ngModel)]="question.question" required></textarea>
+                                </div>
+                                <div class="form-group-mobile">
+                                    <label for="answer-{{i}}">Bonne réponse</label>
+                                    <textarea type="text" id="answer-{{i}}" name="answer-{{i}}" [(ngModel)]="question.answer" required></textarea>
+                                </div>
+                            </div>
+
+                            <div class="fake-answers form-group-mobile">
+                                <label for="">Mauvaises réponses</label>
+                                <textarea type="text" id="fake-answer-1-{{i}}" name="fake-answer-1-{{i}}" [(ngModel)]="question.fake_answer_1" required></textarea>
+                                <textarea type="text" id="fake-answer-2-{{i}}" name="fake-answer-2-{{i}}" [(ngModel)]="question.fake_answer_2" required></textarea>
+                                <textarea type="text" id="fake-answer-3-{{i}}" name="fake-answer-3-{{i}}" [(ngModel)]="question.fake_answer_3" required></textarea>
+                            </div>
+                            <div *ngIf="!question.isComplete() && quizForm.submitted" class="error-message-question">Tous les champs n'ont pas été complétés</div>
+                        
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="add-question">
+                    <a class="svg-btn" (click)="addQuestion()">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>   
+                    </a>
+                </div>
+
+            </div>
+
             <div class="submit-area">
                 <button *ngIf="isCreation()" class="btn btn-primary submit-btn" type="submit">Créer</button>
                 <button *ngIf="!isCreation()" class="btn btn-primary submit-btn" type="submit">Modifier</button>
