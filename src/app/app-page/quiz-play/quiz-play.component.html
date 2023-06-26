@@ -1,13 +1,17 @@
 <div class="root">
+
     <header *ngIf="!testOver" class="quiz-head">
         <h2 class="title">{{quiz.name}}</h2>
         <h2 class="questions">{{currentQuestion}}/{{questions.count()}}</h2>
         <h2 class="informations"></h2>
     </header>
+
     <section class="quiz-play">
         <div *ngIf="!isPlaying" class="starting">
-            <button class="btn btn-primary" (click)="startingQuiz()">Commencer le quiz !</button>
+            <button *ngIf="(isLargeScreen$ | async)" class="btn btn-primary" (click)="startingQuiz()">Commencer le quiz !</button>
+            <button *ngIf="!(isLargeScreen$ | async)" class="btn btn-primary" (click)="startingQuiz()">Commencer le quiz !</button>
         </div>
+
         <ul *ngIf="!testOver" class="question-list">
             <ng-container *ngFor="let question of questionsWithRandomAnswers; let i = index">
                 <li *ngIf="currentQuestionIndex(i)">
@@ -31,8 +35,9 @@
                 </li>
             </ng-container>
         </ul>
+
         <div *ngIf="testOver">
-            <quiz-result [questions]="questionsWithRandomAnswers" [quiz_id]="quiz.id"></quiz-result>
+            <quiz-result [questions]="questionsWithRandomAnswers" [quiz_id]="quiz.id" [isLargeScreen$]="isLargeScreen$"></quiz-result>
         </div>
     </section>
 </div>

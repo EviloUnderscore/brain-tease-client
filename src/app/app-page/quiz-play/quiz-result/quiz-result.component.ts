@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Observable } from 'rxjs';
 import { QuestionsWithAnswers } from 'src/classes/QuestionsWithAnswers';
 import { RandomAnswer } from 'src/classes/RandomAnswer';
 import { HistoriesService } from 'src/services/histories.service';
@@ -11,6 +12,7 @@ import { HistoriesService } from 'src/services/histories.service';
 export class QuizResultComponent {
   @Input() questions: QuestionsWithAnswers;
   @Input() quiz_id: string;
+  @Input() isLargeScreen$: Observable<boolean>;
   details = false;
   score: number;
 
@@ -18,6 +20,7 @@ export class QuizResultComponent {
     this.questions = new QuestionsWithAnswers();
     this.score = 0;
     this.quiz_id = '';
+    this.isLargeScreen$ =  new Observable<boolean>();
   }
 
   ngOnInit(): void{

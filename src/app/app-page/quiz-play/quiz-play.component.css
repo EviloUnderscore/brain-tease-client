@@ -1,10 +1,9 @@
 .quiz-head{
-    position: relative;
     display: flex;
-}
-
-.quiz-head h2{
-    flex-basis: 33.33%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .questions{
@@ -22,14 +21,13 @@
 }
 
 .btn-primary{
-    height: 15vh;
-    width: 35vw;
     font-size: x-large;
     font-weight: 700;
     background-color: rgb(31, 41, 55);
     border: none;
-    
+    padding: 5vw 8vw;
 }
+
 
 .btn-primary:hover{
     box-shadow: inset 1px 1px 5px rgba(31, 41, 55, 0.5);
@@ -54,9 +52,13 @@
     background-color: white;
     box-shadow: 1px 1px 2px rgba(31, 41, 55, 0.25);
     border-radius: 5px;
-    padding: 3rem 1rem;
+    padding: 2vh 4vw;
     margin-bottom: 2vh;
     border: 2px solid rgb(31, 41, 55);
+}
+
+.question-title h3{
+    margin: 0;
 }
 
 .answers{

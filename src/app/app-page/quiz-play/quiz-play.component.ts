@@ -7,6 +7,8 @@ import { RandomAnswer } from 'src/classes/RandomAnswer';
 import { RandomAnswers } from 'src/classes/RandomAnswers';
 import { QuestionsService } from 'src/services/questions.service';
 import { QuizzesService } from 'src/services/quizzes.service';
+import { Observable, map } from 'rxjs';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'quiz-play',
@@ -21,11 +23,17 @@ export class QuizPlayComponent {
   lastQuestion = false;
   currentQuestion = 0;
   testOver = false;
+  public isLargeScreen$: Observable<boolean>;
 
   constructor(
     private quizzesService: QuizzesService,
     private questionsService: QuestionsService,
-    private route: ActivatedRoute){
+    private route: ActivatedRoute,
+    private breakpointObserver: BreakpointObserver){
+      this.isLargeScreen$ = this.breakpointObserver
+        .observe('(min-width: 850px)')
+        .pipe(map((result: { matches: any; }) => result.matches)
+      );
     this.quiz = new Quiz();
     this.questions = new Questions();
     this.questionsWithRandomAnswers = new QuestionsWithAnswers();
