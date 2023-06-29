@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Quiz } from 'src/classes/Quiz';
-import { QuizzesService } from 'src/services/quizzes.service';
 
 @Component({
   selector: 'my-quiz-item-mobile',
@@ -10,12 +9,14 @@ import { QuizzesService } from 'src/services/quizzes.service';
 export class MyQuizItemMobileComponent {
   @Input() quiz: Quiz;
   @Output() deletePressed: EventEmitter<Quiz> = new EventEmitter<Quiz>();
+  public isLoading = false;
 
-  constructor(private quizzesService: QuizzesService){
+  constructor(){
     this.quiz = new Quiz();
   }
 
   public onDeletePressed(): void{
+    this.isLoading = true;
     this.deletePressed.emit(this.quiz)
   }
 }

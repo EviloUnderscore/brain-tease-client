@@ -43,10 +43,15 @@
 }
 
 .btn-quiz{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
     border: none;
     color: rgb(31, 41, 55) !important;
     font-weight: 500;
     padding: 1.5vh 2vw;
+    min-width: 10vw;
 }
 
 .btn-primary{

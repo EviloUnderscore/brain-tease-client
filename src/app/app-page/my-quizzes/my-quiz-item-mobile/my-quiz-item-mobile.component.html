@@ -4,6 +4,11 @@
     </div>
     <div class="btn-section">
         <button class="btn btn-primary btn-quiz" [routerLink]="['/my-quizzes/edit/' + quiz.id]">Modifier</button>
-        <button class="btn btn-danger btn-quiz" (click)="onDeletePressed()">Supprimer</button>
+        <button class="btn btn-danger btn-quiz" (click)="onDeletePressed()" [disabled]="isLoading">
+            <span *ngIf="!isLoading">Supprimer</span>
+            <span *ngIf="isLoading">
+                <mini-loader></mini-loader>
+            </span>
+        </button>
     </div>
 </div>
