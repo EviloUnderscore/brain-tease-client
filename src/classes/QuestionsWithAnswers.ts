@@ -17,6 +17,14 @@ export class QuestionsWithAnswers {
         }
     }
 
+    public randomizeQuestions(): void {
+        // Randomize the order of questions using the Fisher-Yates algorithm
+        for (let i = this.questionsWithAnswers.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [this.questionsWithAnswers[i], this.questionsWithAnswers[j]] = [this.questionsWithAnswers[j], this.questionsWithAnswers[i]];
+        }
+    }
+    
     public count(): number{
         return this.questionsWithAnswers.length;
     }

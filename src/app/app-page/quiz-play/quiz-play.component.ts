@@ -83,6 +83,7 @@ export class QuizPlayComponent {
       this.questionsService.getByQuizId(quizId).subscribe(questions => {        
         this.questions.addAll(questions);
         this.questionsWithRandomAnswers.generateQuestionsWithRandomAnswers(questions);
+        this.questionsWithRandomAnswers.randomizeQuestions();
       })
     })
   }
