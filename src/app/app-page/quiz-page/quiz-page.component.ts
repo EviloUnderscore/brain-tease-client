@@ -22,6 +22,7 @@ export class QuizPageComponent implements OnInit{
   histories: QuizHistories;
   userSearch = '';
   titleSearch = '';
+  userId:  string | null = null;
   public isLargeScreen$: Observable<boolean>;
 
   constructor(
@@ -45,6 +46,11 @@ export class QuizPageComponent implements OnInit{
       this.getQuestionsCount();
     });
     this.getHistories();
+    this.auth.user.subscribe(user => {
+      if (user) {
+        this.userId = user.uid;
+      }
+    });
   }
 
   authorClicked(authorName: string): void{
@@ -52,14 +58,8 @@ export class QuizPageComponent implements OnInit{
     this.updateSearch();
   }
 
-  private async getHistories(): Promise<void>{
-    this.auth.user.subscribe(user => {
-      if (user) {
-        this.historiesService.getByUser(user.uid).subscribe(histories => {
-          this.histories.addAll(histories);
-        })
-      }
-    });
+  private getHistories(): void{
+    this.historiesService.getAll().subscribe(histories => this.histories.addAll(histories));    
   }
 
   private async getAll(): Promise<void>{

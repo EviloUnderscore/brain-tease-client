@@ -13,7 +13,17 @@
     <div class="author">
         <p class="footer-item item-left">Réalisé par <a class="authorName" (click)="authorClicked()">{{quiz.authorName}}</a></p>
         <p class="footer-item item-center">Meilleur score</p>
-        <p class="footer-item item-right">Nombre de questions : {{nbOfQuestions}}</p>
+        <p class="footer-item item-right">Nombre de questions : {{nbOfQuestions}} </p>
     </div>
-    <div class="score">{{displayScore()}}</div>
+    <div class="bottom-area">
+        <p>
+
+        </p>
+        <p class="score">
+            {{displayScore()}}
+        </p>
+        <p class="participants">
+            {{displayNumberOfParticipants()}}
+        </p>
+      </div>  
 </div>

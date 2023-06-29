@@ -13,6 +13,7 @@ export class QuizItemComponent{
   @Input() quiz: Quiz;
   @Input() questionsCount: QuestionsCount;
   @Input() histories: QuizHistories;
+  @Input() userId:  string | null = null;
   @Output() onAuthorName: EventEmitter<string> = new EventEmitter<string>();
   nbOfQuestions: number | null;
   isLoading = true;
@@ -50,26 +51,24 @@ export class QuizItemComponent{
     this.nbOfQuestions= nbOfQuestions;
   }
 
-  displayScore(): string{
+  displayNumberOfParticipants(): string{
     const quizHistories = this.histories.getHistoriesByQuizId(this.quiz.id);
     if(!quizHistories.isEmpty()){
-      const higherScore = this.getHigherScore(quizHistories);
+      const nbOfParticipants = quizHistories.getNbOfParticipants();
+      return nbOfParticipants + " participant(s)"
+    } else {
+      return "Aucun participant"
+    }
+  }
+
+  displayScore(): string{
+    const userHistories = this.histories.getHistoriesByUserAndQuiz(this.userId as string, this.quiz.id);
+    if(!userHistories.isEmpty()){
+      const higherScore = userHistories.getHigherScore();
       return higherScore + "%"
     } else {
       return "Aucun score répertorié"
     }
-  }
-
-  private getHigherScore(quizHistories: QuizHistories): number{
-    let highestScore = 0;
-
-    for (const history of quizHistories) {
-        if (history.score > highestScore) {
-            highestScore = history.score;
-        }
-    }
-
-    return highestScore;
   }
 
   private getCategory(): void{

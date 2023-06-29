@@ -38,9 +38,24 @@
     text-align: right;
 }
 
-.score{
+.bottom-area{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bottom-area p {
+    flex-basis: 33.3%;
+}
+
+.score {
     text-align: center;
     font-weight: 600;
+}
+
+.participants {
+    font-size: larger;
+    text-align: right;
 }
 
 .author{

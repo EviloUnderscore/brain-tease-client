@@ -11,6 +11,7 @@ import { CategoriesService } from 'src/services/category.service';
 })
 export class QuizItemMobileComponent{
   @Input() quiz: Quiz;
+  @Input() userId:  string | null = null;
   @Input() questionsCount: QuestionsCount;
   @Input() histories: QuizHistories;
   @Output() onAuthorName: EventEmitter<string> = new EventEmitter<string>();
@@ -51,25 +52,23 @@ export class QuizItemMobileComponent{
   }
 
   displayScore(): string{
-    const quizHistories = this.histories.getHistoriesByQuizId(this.quiz.id);
+    const quizHistories = this.histories.getHistoriesByUserAndQuiz(this.userId as string, this.quiz.id);
     if(!quizHistories.isEmpty()){
-      const higherScore = this.getHigherScore(quizHistories);
+      const higherScore = quizHistories.getHigherScore();
       return higherScore + "%"
     } else {
       return "-"
     }
   }
 
-  private getHigherScore(quizHistories: QuizHistories): number{
-    let highestScore = 0;
-
-    for (const history of quizHistories) {
-        if (history.score > highestScore) {
-            highestScore = history.score;
-        }
+  displayNumberOfParticipants(): string{
+    const quizHistories = this.histories.getHistoriesByQuizId(this.quiz.id);
+    if(!quizHistories.isEmpty()){
+      const nbOfParticipants = quizHistories.getNbOfParticipants();
+      return nbOfParticipants + " participant(s)"
+    } else {
+      return "Aucun participant"
     }
-
-    return highestScore;
   }
 
   private getCategory(): void{
