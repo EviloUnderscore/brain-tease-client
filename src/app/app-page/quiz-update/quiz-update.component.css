@@ -107,6 +107,10 @@ input, textarea, select{
 }
 
 .submit-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4vw;
     background-color: rgba(31, 41, 55);
     border: none;
     padding: 3vh 15vw;

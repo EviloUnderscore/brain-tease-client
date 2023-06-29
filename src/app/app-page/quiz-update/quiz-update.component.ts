@@ -21,6 +21,7 @@ export class QuizUpdateComponent {
   questions: Questions;
   hasQuestion: boolean = false;
   public isLargeScreen$: Observable<boolean>;
+  public isLoading = false;
 
   constructor(
     private router: Router,
@@ -64,6 +65,7 @@ export class QuizUpdateComponent {
   }
 
   submitForm(): void{
+    this.isLoading = true;
     if(this.isFormValid()){
       if(this.isCreation()){
         this.quizzesService.createQuiz(this.quiz.name, this.quiz.description, this.quiz.category_id).subscribe(quiz => {          

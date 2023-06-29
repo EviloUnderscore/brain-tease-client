@@ -177,8 +177,18 @@
             </div>
 
             <div class="submit-area">
-                <button *ngIf="isCreation()" class="btn btn-primary submit-btn" type="submit">Créer</button>
-                <button *ngIf="!isCreation()" class="btn btn-primary submit-btn" type="submit">Modifier</button>
+                <button *ngIf="isCreation()" class="btn btn-primary submit-btn" type="submit" [disabled]="isLoading">
+                    <span>Créer</span>
+                    <span *ngIf="isLoading">
+                        <mini-loader></mini-loader>
+                    </span>
+                </button>
+                <button *ngIf="!isCreation()" class="btn btn-primary submit-btn" type="submit" [disabled]="isLoading">
+                    <span>Modifier</span>
+                    <span *ngIf="isLoading">
+                        <mini-loader></mini-loader>
+                    </span>
+                </button>
             </div>
           </form>
     </div>
