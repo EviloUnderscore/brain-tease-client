@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { QuestionsWithAnswers } from 'src/classes/QuestionsWithAnswers';
+import { QuizHistories } from 'src/classes/QuizHistories';
 import { RandomAnswer } from 'src/classes/RandomAnswer';
 import { HistoriesService } from 'src/services/histories.service';
 
@@ -13,6 +14,7 @@ export class QuizResultComponent {
   @Input() questions: QuestionsWithAnswers;
   @Input() quiz_id: string;
   @Input() isLargeScreen$: Observable<boolean>;
+  histories: QuizHistories;
   details = false;
   score: number;
 
@@ -21,11 +23,15 @@ export class QuizResultComponent {
     this.score = 0;
     this.quiz_id = '';
     this.isLargeScreen$ =  new Observable<boolean>();
+    this.histories = new QuizHistories();
   }
 
   ngOnInit(): void{
     this.computeScore();
-    this.addHistory();
+    this.addHistory().then(() => {
+      this.getHistoriesByQuiz();
+      
+    });
   }
 
   displayDetails(): void{
@@ -42,7 +48,13 @@ export class QuizResultComponent {
     }
   }
 
-  private addHistory(): void{
+  private getHistoriesByQuiz(): void{
+    this.historiesService.getByQuiz(this.quiz_id).subscribe(histories => {
+      this.histories.addAll(histories);
+    })
+  }
+
+  private async addHistory(): Promise<void>{
     this.historiesService.createHistory(this.quiz_id, this.score).subscribe();
   }
 

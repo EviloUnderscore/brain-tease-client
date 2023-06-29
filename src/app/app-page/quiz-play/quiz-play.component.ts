@@ -9,8 +9,6 @@ import { QuestionsService } from 'src/services/questions.service';
 import { QuizzesService } from 'src/services/quizzes.service';
 import { Observable, map } from 'rxjs';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { QuizHistories } from 'src/classes/QuizHistories';
-import { HistoriesService } from 'src/services/histories.service';
 
 @Component({
   selector: 'quiz-play',
@@ -21,7 +19,6 @@ export class QuizPlayComponent {
   quiz: Quiz;
   questions: Questions;
   questionsWithRandomAnswers: QuestionsWithAnswers;
-  histories: QuizHistories;
   isPlaying = false;
   lastQuestion = false;
   currentQuestion = 0;
@@ -31,7 +28,6 @@ export class QuizPlayComponent {
   constructor(
     private quizzesService: QuizzesService,
     private questionsService: QuestionsService,
-    private historiesService: HistoriesService,
     private route: ActivatedRoute,
     private breakpointObserver: BreakpointObserver){
       this.isLargeScreen$ = this.breakpointObserver
@@ -41,12 +37,10 @@ export class QuizPlayComponent {
     this.quiz = new Quiz();
     this.questions = new Questions();
     this.questionsWithRandomAnswers = new QuestionsWithAnswers();
-    this.histories = new QuizHistories();
   }
 
   ngOnInit(): void{
     this.getQuiz();
-    this.getHistories();
   }
 
   startingQuiz(): void{
@@ -90,14 +84,6 @@ export class QuizPlayComponent {
         this.questionsWithRandomAnswers.generateQuestionsWithRandomAnswers(questions);
         this.questionsWithRandomAnswers.randomizeQuestions();
       })
-    })
-  }
-
-  private getHistories(): void{
-    this.historiesService.getAll().subscribe(histories => {
-      this.histories.addAll(histories);
-      
-    console.log(histories);
     })
   }
 

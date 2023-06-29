@@ -30,6 +30,10 @@ export class HistoriesService {
     return this.http.get<QuizHistories>(`/api/histories/user/${id}`)
   }
 
+  getByQuiz(id: string):  Observable<QuizHistories>{
+    return this.http.get<QuizHistories>(`/api/histories/quiz/${id}`)
+  }
+
   deleteByQuizId(id: string): Observable<any>{
     return this.http.delete<any>(`/api/histories/quiz/${id}`);
   }
