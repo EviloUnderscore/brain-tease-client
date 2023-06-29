@@ -47,6 +47,11 @@ export class QuizPageComponent implements OnInit{
     this.getHistories();
   }
 
+  authorClicked(authorName: string): void{
+    this.userSearch = authorName;
+    this.updateSearch();
+  }
+
   private async getHistories(): Promise<void>{
     this.auth.user.subscribe(user => {
       if (user) {

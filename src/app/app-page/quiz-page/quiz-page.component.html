@@ -17,13 +17,13 @@
     
     <ul *ngIf="(isLargeScreen$ | async)" class="quiz-main">
         <li *ngFor="let quiz of filterdQuizzes">
-            <quiz-item [quiz]="quiz" [questionsCount]="questionsCount" [histories]="histories"></quiz-item>
+            <quiz-item [quiz]="quiz" [questionsCount]="questionsCount" [histories]="histories" (onAuthorName)="authorClicked($event)"></quiz-item>
         </li>
     </ul>
 
     <ul *ngIf="!(isLargeScreen$ | async)" class="quiz-main">
         <li *ngFor="let quiz of filterdQuizzes">
-            <quiz-item-mobile [quiz]="quiz" [questionsCount]="questionsCount" [histories]="histories"></quiz-item-mobile>
+            <quiz-item-mobile [quiz]="quiz" [questionsCount]="questionsCount" [histories]="histories" (onAuthorName)="authorClicked($event)"></quiz-item-mobile>
         </li>
     </ul>
     

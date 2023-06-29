@@ -4,7 +4,7 @@
         <p class="category">{{quiz.category.name}}</p>
     </div>
     <div class="author">
-        <p class="footer-item item-left">Réalisé par <span class="bold">{{quiz.authorName}}</span></p>
+        <p class="footer-item item-left">Réalisé par <a class="authorName" (click)="authorClicked()">{{quiz.authorName}}</a></p>
         <div class="score-area">
             <p>Meilleur score :</p>
             <div class="score">{{displayScore()}}</div>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { QuestionsCount } from 'src/classes/QuestionsCount';
 import { Quiz } from 'src/classes/Quiz';
 import { QuizHistories } from 'src/classes/QuizHistories';
@@ -13,6 +13,7 @@ export class QuizItemMobileComponent{
   @Input() quiz: Quiz;
   @Input() questionsCount: QuestionsCount;
   @Input() histories: QuizHistories;
+  @Output() onAuthorName: EventEmitter<string> = new EventEmitter<string>();
   nbOfQuestions: number | null;
   isLoading = true;
 
@@ -31,6 +32,10 @@ export class QuizItemMobileComponent{
       this.computeNumberOfQuestions();
       this.isLoading = false;
     }, 100)
+  }
+
+  authorClicked(): void{    
+    this.onAuthorName.emit(this.quiz.authorName);
   }
 
   computeNumberOfQuestions(): void{
