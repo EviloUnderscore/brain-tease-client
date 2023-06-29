@@ -8,9 +8,19 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 })
 export class AppComponent {
   title = 'Brain Tease';
+  loading = true;
+  hasUser = false;
 
   constructor(public auth: AngularFireAuth){
   }
 
+  ngOnInit(): void{
+    this.auth.user.subscribe(user => {
+      if(user){
+        this.hasUser = true
+      }
+      this.loading = false;
+    });
+  }
 
 }

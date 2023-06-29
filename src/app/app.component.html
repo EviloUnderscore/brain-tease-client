@@ -2,12 +2,20 @@
 
     <nav-bar></nav-bar>
 
-    <div *ngIf="auth.user | async">
-        <app-page></app-page>
-    </div>
+    <ng-container *ngIf="loading; else contentTemplate">
+      <loader></loader>
+    </ng-container>
 
-    <div *ngIf="!(auth.user | async)">
-        <login-page></login-page>
-    </div>
+    <ng-template #contentTemplate>
 
-</div>
+        <div *ngIf="hasUser; else loginTemplate">
+          <app-page></app-page>
+        </div>
+
+        <ng-template #loginTemplate>
+          <login-page></login-page>
+        </ng-template>
+
+    </ng-template>
+
+    </div>
