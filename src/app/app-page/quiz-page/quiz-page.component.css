@@ -16,6 +16,10 @@
     color: rgb(31, 41, 55)
 }
 
+h2{
+    margin: 0;
+}
+
 .sort{
     font-size: small;
     font-weight: 600;
