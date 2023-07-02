@@ -15,6 +15,7 @@ export class QuizResultComponent {
   @Input() quiz_id: string;
   @Input() isLargeScreen$: Observable<boolean>;
   histories: QuizHistories;
+  scoreboard: QuizHistories;
   details = false;
   score: number;
 
@@ -24,13 +25,15 @@ export class QuizResultComponent {
     this.quiz_id = '';
     this.isLargeScreen$ =  new Observable<boolean>();
     this.histories = new QuizHistories();
+    this.scoreboard = new QuizHistories();
   }
 
   ngOnInit(): void{
     this.computeScore();
     this.addHistory().then(() => {
-      this.getHistoriesByQuiz();
-      
+      setTimeout(() => {
+        this.getHistoriesByQuiz();
+      }, 100)
     });
   }
 
@@ -51,7 +54,12 @@ export class QuizResultComponent {
   private getHistoriesByQuiz(): void{
     this.historiesService.getByQuiz(this.quiz_id).subscribe(histories => {
       this.histories.addAll(histories);
+      this.renderScoreboard();
     })
+  }
+
+  private renderScoreboard(): void{
+    this.scoreboard = this.histories.getTopScores(this.histories);
   }
 
   private async addHistory(): Promise<void>{

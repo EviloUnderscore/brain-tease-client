@@ -1,0 +1,23 @@
+<div class="root" *ngIf="(isLargeScreen$ | async)">
+    <div class="score-placement">
+        {{index}}.
+    </div> 
+    <div class="score-user">
+        {{userName}}
+    </div>
+    <div class="score-point">
+        {{score.score}}%
+    </div>
+</div>
+
+<div class="root-mobile" *ngIf="!(isLargeScreen$ | async)">
+    <div class="score-placement">
+        {{index}}.
+    </div> 
+    <div class="score-user">
+        {{userName}}
+    </div>
+    <div class="score-point">
+        {{score.score}}%
+    </div>
+</div>

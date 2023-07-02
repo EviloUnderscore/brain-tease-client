@@ -51,6 +51,41 @@ export class QuizHistories{
         return highestScore;
     }
 
+    public getTopScores(histories: QuizHistories): QuizHistories{
+
+        const scoreboard = new QuizHistories();
+        // Create an empty map to store the highest scores for each user_id
+        const highestScoresMap = new Map<string, number>();
+
+        // Iterate over the histories array to find the highest scores for each user_id
+        for (const history of histories) {
+            const { user_id, score } = history;
+
+            // Check if the user_id already exists in the map
+            if (highestScoresMap.has(user_id)) {
+            // If the score is higher than the existing score in the map, update it
+                if (score > highestScoresMap.get(user_id)!) {
+                    highestScoresMap.set(user_id, score);
+                }
+                } else {
+                // If the user_id doesn't exist in the map, add it with the score
+                highestScoresMap.set(user_id, score);
+                }
+        }
+
+        // Sort the highest scores in descending order
+        const sortedScores = Array.from(highestScoresMap.values()).sort((a, b) => b - a);
+
+        for(let score of highestScoresMap){
+            const scoreHistory = new QuizHistory();
+            scoreHistory.user_id = score[0];
+            scoreHistory.score = score[1];
+            scoreboard.addQuiz(scoreHistory);
+        }
+        
+        return scoreboard;
+    }
+
     public getNbOfParticipants(): number{
         let nbOfParticipants = 0
         const participants = new Set(); // Using a Set to store unique user IDs

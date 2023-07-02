@@ -22,6 +22,7 @@ import { QuizItemMobileComponent } from './app-page/quiz-page/quiz-item-mobile/q
 import { MyQuizItemMobileComponent } from './app-page/my-quizzes/my-quiz-item-mobile/my-quiz-item-mobile.component';
 import { LoaderComponent } from './loader/loader.component';
 import { MiniLoaderComponent } from './mini-loader/mini-loader.component';
+import { ScoreItemComponent } from './app-page/quiz-play/quiz-result/score-item/score-item.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { MiniLoaderComponent } from './mini-loader/mini-loader.component';
     MyQuizItemMobileComponent,
     LoaderComponent,
     MiniLoaderComponent,
+    ScoreItemComponent,
 
   ],
   imports: [

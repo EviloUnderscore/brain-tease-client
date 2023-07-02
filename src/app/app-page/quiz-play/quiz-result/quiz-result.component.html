@@ -28,4 +28,30 @@
             </li>
         </ng-container>
     </ul>
+
+    <div class="results" *ngIf="(isLargeScreen$ | async)">
+        <h3>Meilleurs scores</h3>
+        <ul class="scoreboard">
+
+            <ng-container *ngFor="let score of scoreboard, let i = index">
+                <li class="score-item">
+                    <score-item [score]="score" [isLargeScreen$]="isLargeScreen$" [index]="i+1"></score-item>                    
+                </li>
+            </ng-container>
+
+        </ul>
+    </div>
+
+    <div class="results" *ngIf="!(isLargeScreen$ | async)">
+        <h3>Meilleurs scores</h3>
+        <ul class="scoreboard-mobile">
+
+            <ng-container *ngFor="let score of scoreboard, let i = index">
+                <li class="score-item">
+                    <score-item [score]="score" [isLargeScreen$]="isLargeScreen$" [index]="i+1"></score-item>                    
+                </li>
+            </ng-container>
+
+        </ul>
+    </div>
 </div>
