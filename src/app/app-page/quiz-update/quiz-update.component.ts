@@ -65,8 +65,8 @@ export class QuizUpdateComponent {
   }
 
   submitForm(): void{
-    this.isLoading = true;
     if(this.isFormValid()){
+      this.isLoading = true;
       if(this.isCreation()){
         this.quizzesService.createQuiz(this.quiz.name, this.quiz.description, this.quiz.category_id).subscribe(quiz => {          
           for (let question of this.questions){
