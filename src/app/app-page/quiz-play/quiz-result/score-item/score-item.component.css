@@ -21,14 +21,14 @@
 }
 
 .score-placement{
-    flex-basis: 33.33%;
+    flex-basis: 25%;
 }
 .score-user{
-    flex-basis: 33.33%;
+    flex-basis: 50%;
     text-align: center;
 }
 .score-point{
-    flex-basis: 33.33%;
+    flex-basis: 25%;
     text-align: right;
     font-weight: 600;
 }

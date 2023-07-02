@@ -73,15 +73,15 @@ export class QuizHistories{
                 }
         }
 
-        // Sort the highest scores in descending order
-        const sortedScores = Array.from(highestScoresMap.values()).sort((a, b) => b - a);
-
         for(let score of highestScoresMap){
             const scoreHistory = new QuizHistory();
             scoreHistory.user_id = score[0];
             scoreHistory.score = score[1];
             scoreboard.addQuiz(scoreHistory);
         }
+
+        scoreboard.histories.sort((a, b) => b.score - a.score);
+        
         
         return scoreboard;
     }
