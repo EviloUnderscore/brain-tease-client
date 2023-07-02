@@ -22,6 +22,7 @@ export class QuizPageComponent implements OnInit{
   histories: QuizHistories;
   userSearch = '';
   titleSearch = '';
+  sortByDateDesc = true;
   userId:  string | null = null;
   public isLargeScreen$: Observable<boolean>;
 
@@ -58,6 +59,11 @@ export class QuizPageComponent implements OnInit{
     this.updateSearch();
   }
 
+  changeSorting(): void{
+    this.sortByDateDesc = !this.sortByDateDesc;
+    this.filterdQuizzes.sortByDate(this.sortByDateDesc);
+  }
+
   private getHistories(): void{
     this.historiesService.getAll().subscribe(histories => this.histories.addAll(histories));    
   }
@@ -66,7 +72,7 @@ export class QuizPageComponent implements OnInit{
     this.quizzesService.getAll().subscribe(quizzes => {
       this.quizzes.addAll(quizzes);
       this.filterdQuizzes.addAll(quizzes);
-      this.filterdQuizzes.sortByDate();
+      this.filterdQuizzes.sortByDate(this.sortByDateDesc);
     });
   }
 
@@ -84,5 +90,6 @@ export class QuizPageComponent implements OnInit{
     });
 
     this.filterdQuizzes.quizzes = filteredQuizzes;
+    this.filterdQuizzes.sortByDate(this.sortByDateDesc);
   }
 }

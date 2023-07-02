@@ -6,7 +6,28 @@
 .quiz-head{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 4vh;
+}
+
+.sorting{
+    cursor: pointer;
+    text-decoration: none;
+    color: rgb(31, 41, 55)
+}
+
+.sort{
+    font-size: small;
+    font-weight: 600;
+    margin-left: 2vw;
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+}
+
+.svg{
+    width: 18px;
+    height: 18px;
 }
 
 .quiz-head-mobile{
@@ -33,6 +54,7 @@
 
 .search-bar input {
     width: 25vw;
+    height: 5vh;
     border-radius: 5px;
     border: none;
     box-shadow: 2px 2px 3px 1px rgba(31, 41, 55, 0.25);

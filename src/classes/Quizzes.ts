@@ -45,11 +45,15 @@ export class Quizzes {
         return this.quizzes.map(quiz => quiz.toString()).join("\n");
     }
 
-    public sortByDate(){
+    public sortByDate(desc: boolean = true){
         this.quizzes.sort((a, b) => {
             const dateA = new Date(a.created_at);
             const dateB = new Date(b.created_at);
-            return dateA.getTime() - dateB.getTime();
+            if(desc){
+                return dateB.getTime() - dateA.getTime();
+            } else {
+                return dateA.getTime() - dateB.getTime();
+            }
         });
     }
 
